@@ -83,8 +83,11 @@ WSGI_APPLICATION = 'angry_bird.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'angry_bird',
+        'HOST': 'localhost',
+        'USER': 'root',
+        'PASSWORD': 'password22W$'
     }
 }
 
