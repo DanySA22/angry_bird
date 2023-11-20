@@ -38,5 +38,14 @@ def user_profile(request):
 
 #the next groups of views are for the frontend main page that include Get (rendering the HTML).
 
+
+
 #the next groups of views are for the frontend sign in page that include Get (rendering the HTML), POST(data).
-#the next groups of views are for the frontend game page that include Get(rendering 3 different endpoint for each level of dificulty).
+#the next groups of views are for the frontend game page that include Get and rendering 3 different endpoint for each level of dificulty).
+
+@api_view()
+def game_score(request):
+    # puntuation = Customer.objects.filter(username)
+    #serializer = CustomerSerializer(puntuation)
+    #return Response(serializer.data)  
+    return Response('todo bien')
