@@ -7,7 +7,13 @@ from .serializer import CustomerSerializer
  
 # Create your views here.
 
-def say_hello(request):
+def say_hello1(request):
+    return render(request, 'game.html')
+
+def say_hello2(request):
+    return render(request, 'game.html')
+
+def say_hello3(request):
     return render(request, 'game.html')
 
 #the next groups of views are for the frontend profile page that include Get, POST, PUT.
@@ -34,7 +40,10 @@ def user_profile(request):
             return Response('ok')
         else:
             return Response('de pinga esto')
-        
+
+@api_view()
+def specific_user(request, pk):
+    return Response(pk)
 
 #the next groups of views are for the frontend main page that include Get (rendering the HTML).
 
