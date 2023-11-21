@@ -15,9 +15,12 @@ class Customer(models.Model):
         return self.username
     
     
-class Dificulty(models.Model):
-     level = models.CharField(max_length=255)
+#class Dificulty(models.Model):
+     #level = models.CharField(max_length=255)
   #  customer = models.ForeignKey(Customer, on_delete=models.CASCADE, default=2)
+ #this hold the level dificulty by user. I want set that
+ #when user click on the level this POST on this table the level and then 
+ #when user sign in or auth will conect the user ino with the level.
     
-     def __str__(self) -> str:
-        return self.level
+     #def __str__(self) -> str:
+       # return self.level

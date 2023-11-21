@@ -5,9 +5,8 @@ urlpatterns = [
     path('easy/', views.say_hello1),
     path('medium/', views.say_hello2),
     path('hard/', views.say_hello3),
-    #this 3 will render the different game pages 
-    # and their difficulties.
-    path('game_area/', views.game_score),
+    path('game_points/pk/', views.game_score),
+    path('image_user/<pk>/', views.image_user),
     path('profile/', views.user_profile),
     path('profile/<pk>/', views.specific_user)
 ]
