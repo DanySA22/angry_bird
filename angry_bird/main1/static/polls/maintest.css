@@ -1,0 +1,19 @@
+body {
+    background-image: url('main_page3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#first {
+    text-align: center;
+    letter-spacing: 5px;
+    color: bisque;
+    position: relative;
+    top: 100px;
+
+}
+
+#second {
+  position: relative;
+  left:90%; 
+}

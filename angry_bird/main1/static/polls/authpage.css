@@ -1,0 +1,26 @@
+body {
+    background-image: url('angrybirds1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+#Sign1 {
+    position: relative;
+    left: 35%;
+    top: 150px;
+}
+
+#Log1 {
+    position: relative;
+    left: 35%;
+    top: 200px;
+}
+
+#for_home {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    left: 70px;
+    top:25px;
+}

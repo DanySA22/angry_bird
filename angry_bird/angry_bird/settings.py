@@ -130,8 +130,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'Static1')  Pending
-#MEDIA_URL = 'angry_bird\Static1'
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')  Pending
+#MEDIA_URL = 'angry_bird\main1\static\media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

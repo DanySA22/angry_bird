@@ -1,0 +1,78 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#game{
+    background-image: url("game_background1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 1000px;
+    height: 1100px;
+    border: 1px solid black;
+    margin: auto;
+    overflow: hidden;
+}
+
+#pipe{
+    width: 50px;
+    height: 1100px;
+    position: relative;
+    left: 950px;
+    background-color: black;
+    animation: pipe 2s infinite linear;
+}
+
+@keyframes pipe{
+    0%{left: 950px}
+    100%{left: -50px}
+}
+
+#hole{
+    width: 50px;
+    height: 400px;
+    background-color: white;
+    position: relative;
+    left: 950px;
+    top: -1100px;
+    animation: pipe 2s infinite linear;
+}
+
+#angry_bird{
+    width: 50px;
+    height: 50px; 
+    background-color: red;
+    position: absolute;
+    top: 400px;
+    border-radius: 50%;
+
+}
+
+.first {
+    float: right;
+    position: relative;
+    right: 40px;
+}
+
+#profile_image{
+    float: right;
+    position: relative;
+    bottom: 600px;
+    right: 200px;
+    width: 75px;
+    height: 75px;
+}
+
+@keyframes movement {
+    from {left: 0%; top: 320px;}
+    to { left: 100%; top: 320px;}
+}
+
+
+#for_home {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    left: 70px;
+    top:25px;
+}
