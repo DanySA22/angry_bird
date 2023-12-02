@@ -1,0 +1,40 @@
+body {
+    background-color: burlywood;
+}
+
+#profile1 {
+    position:relative;
+    top: 200px;
+    left: 300px;
+    
+}
+
+#profile2 {
+    float: right;
+    position: relative;
+    right: 100px;
+    bottom: 300px;
+}
+#profile3 {
+    float: right;
+    position: relative;
+    right: -50px;
+    top: 100px;
+}
+#profile4 {
+    float: right;
+    position: relative;
+    left: 180px;
+    top: 300px;
+}
+#profile5 {
+    position: relative;
+    top: 400px;
+}
+#for_home {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    left: 70px;
+    top:25px;
+}

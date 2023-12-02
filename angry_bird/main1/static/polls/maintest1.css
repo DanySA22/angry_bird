@@ -1,5 +1,6 @@
 body {
-    background-image: url('main_page3.jpg');
+    background-color:  brown;
+   /*background-image: url('media\main_page3.jpg');*/
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -7,7 +8,7 @@ body {
 #first {
     text-align: center;
     letter-spacing: 5px;
-    color: bisque;
+    color: red;
     position: relative;
     top: 100px;
 

@@ -8,3 +8,9 @@ def main_page(request):
 
 def test_page(request):
     return render(request, 'index.html')
+
+def user_profile(request):
+    return render(request, 'profile.html')
+
+def user_game(request):
+    return render(request, 'game1.html')
