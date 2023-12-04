@@ -14,3 +14,9 @@ def user_profile(request):
 
 def user_game(request):
     return render(request, 'game1.html')
+
+def auth_game(request):
+    return render(request, 'authpage.html')
+
+def sign_in_game(request):
+    return render(request, 'signinpage.html')

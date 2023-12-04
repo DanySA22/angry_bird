@@ -11,9 +11,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'polls/profile1.css' %}">
 </head>
+<!-- The access to this page is restrcited
+for user already authenticated-->
 <body>
-    <a href="maintest.html" target="_blank"> <img id="for_home" class="rounded-circle" src="house_to_main.jpg" 
-        alt="Going to main page"></a>
+    <a href="http://127.0.0.1:8000/" target="_blank"> <img id="for_home" class="rounded-circle" src="{% static "media\house_to_main.jpg"%}" 
+        alt="Going to main page"> </a>
     <div id="profile1">
         <h3>PROFILE INFORMATION</h3>
         <form style="width:600px;" action="game.html" method="post, get">
@@ -37,10 +39,22 @@
             <button type="button" class="btn btn-info">Submit</button>
         </form>
     </div>
-    <a href="profile.html" target="_blank"> <img 
-        id="profile2" class="rounded-circle" src="empty_profile.jpg" 
-        alt="Your profile image"></a>
-    
+    <div>
+        
+        <img id="profile2" class="rounded-circle" src="{% static 'media\empty_profile.jpg' %}" 
+        class="col-sm-2 rounded-circle" alt="User profile image"> 
+            
+        
+        <!--Here I will put as a round thumbnail the user image if 
+        he added (in that case will be a get the image field on Coustomer model)
+        If he doesnt add an image get a default image (that will be
+        empty_profile.jpg)
+        If he want to add or change an image set here POST or put
+        targeting on the model the field image of that single user; 
+        the capability upload image needs to be on
+        -->
+    </div>
+
     <div id="profile3">
         <h3>How we did it?</h3>
         <form action="submit.py" method="post">
@@ -60,11 +74,19 @@
         </form>
 
     </div>
+
+    <!-- Here don't forget create a validation 
+        that allow you to select and send to the user model customer field rating only one
+        puntuation at the time
+    -->
     <div id="profile4">
         <h3>Score</h3>
         <p> {{variable}} points</p>
 
+    <!-- This will receive back a get request with the user score-->
     </div>
+
+    
     <div id="profile5">
         <h3>What level you prefer?</h3>
         <div class="d-flex flex-row">
@@ -90,6 +112,9 @@ they are different html with different speed representing the different levels
 Also the dificulty level on record for that user will change
 so next time that he log in he will go directly to that level-->
     </div>
+    <footer>
+        <div> Not forget to add here the cool sentence </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>

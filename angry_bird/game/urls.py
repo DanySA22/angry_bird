@@ -6,8 +6,13 @@ urlpatterns = [
     path('medium/', views.say_hello2),
     path('hard/', views.say_hello3),
     path('game_points/pk/', views.game_score),
-    path('image_user/<pk>/', views.image_user),
+    path('media1/', views.image_user),
     path('profile/', views.user_profile),
     path('profile/<pk>/', views.specific_user)
 ]
 
+''' I will let the game app handle all the endpoints and apis
+   related to specific elements
+   and the main app all the endpoint/logic
+   related to render whole frontend pages
+'''

@@ -77,9 +77,31 @@ def game_score(request):
  Then when user comeback to the game GET the last score. So
 this function should be filter by user playing (id) and by the score field '''
 
-@api_view()
+
+@api_view(['GET', 'POST', 'PUT'])
 def image_user(request):
-    pass
+    if request.method == 'GET':
+        profile = Customer.objects.all()   # the ORM part; the data that I want to return. Check your frontend to see what particular data to return
+        serializer = CustomerSerializer(profile, many=True) # the serializer class using as argument the ORM part. So transforming what data we decide to use on a Python dictionary.
+        return Response(serializer.data)   # Transforming the resulting Python dictionary in a JSON object.
+    elif request.method == 'POST':
+        serializer = CustomerSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.validated_data
+            serializer.save()
+            return Response('ok')
+        else:
+            return Response('de pinga esto')
+        
+    elif request.method == 'PUT':
+        serializer = CustomerSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.validated_data
+            serializer.save()
+            return Response('ok')
+        else:
+            return Response('de pinga esto')
+    pass 
  
 # in this function we GET the image field for that particular user. This
 #on the game, profile and main pages. On profile it is also a POST

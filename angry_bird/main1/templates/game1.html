@@ -4,7 +4,7 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Welcome to Angry Bird </title>
+    <title> Let's play! </title>
     
     <!-- Optional: Add meta tags for SEO -->
     <meta name="description" content="A brief description of your page">
@@ -17,8 +17,18 @@
 </head>
 
 <body id="demo1">
+    
     <div id="game">
-        <p>Testing of the game page</p>
+        <a href='//127.0.0.1:8000/user_profile/' target = _blank> 
+            <img src="{% static 'media\empty_profile.jpg' %}" 
+            class="col-sm-2 rounded-circle" alt="User profile image"> 
+            
+        </a>
+        <a href="http://127.0.0.1:8000/" target="_blank"> <img id="for_home" class="rounded-circle" src="{% static "media\house_to_main.jpg"%}" 
+            alt="Going to main page"> </a>
+
+        <p> Score </p>
+
    <!-- <a href="maintest.html" target="_blank"> <img id="for_home" class="rounded-circle" src="house_to_main.jpg" 
         alt="Going to main page"></a> -->
         

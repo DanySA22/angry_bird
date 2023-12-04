@@ -1,8 +1,9 @@
 body {
-    background-image: url('angrybirds1.jpg');
+    background-image: url('media/angrybird5.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    color: white;
+    
+    /*background-color: blue;*/
 }
 
 #Sign1 {

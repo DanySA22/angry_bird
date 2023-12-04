@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang='en'>
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Authentication </title>
@@ -8,12 +9,13 @@
     <!-- Optional: Add meta tags for SEO -->
     <meta name="description" content="A brief description of your page">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="authpage.css">
+    
+    <link rel="stylesheet" href="{% static 'polls\authpage1.css' %}">
 
 </head>
 <body>
-    <a href="maintest.html" target="_blank"> <img id="for_home" class="rounded-circle" src="house_to_main.jpg" 
-        alt="Going to main page"></a>
+    <a href="http://127.0.0.1:8000/" target="_blank"> <img id="for_home" class="rounded-circle" src="{% static "media\house_to_main.jpg"%}" 
+        alt="Going to main page"> </a>
     <div id="Sign1">
         <h1>Sign in</h1>
         <form action="game.html" method="post" class="d-flex flex-column">
@@ -33,23 +35,14 @@
             <br>
             <button type="submit" class="col-sm-1">Submit</button>
         </form>
-    <!--when user hit submit we should POST the data on related table(model) and at the same time render 
-        the game at the level that user alredy picked-->
+    <!--when user hit submit we should POST the data on related table(model) and at the same time send
+        the user to the signin page
+    So under action we can put the corresponding endpoint from auth or game app; the
+    one that will receive the data as POST and will added it to the user database model and customer model
+    -->
     
     </div>
      
-        
-    <form id="Log1" action="game.html" method="get" class="d-flex flex-column">
-        <h1>Log in</h1>
-        <label for="uname">Username</label>
-        <input type="text" id="uname" class="col-sm-3">
-        <label for="psw">Password</label>
-        <input type="password" id="psw" class="col-sm-3">
-        <br>
-        <br>
-        <input type="submit" value="Submit" class="col-sm-1">
-    </form>
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 

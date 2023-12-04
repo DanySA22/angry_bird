@@ -3,12 +3,15 @@ from django.db import models
 # Create your models here.
 
 class Customer(models.Model):
+    first_name = models.CharField(max_length=255, default= 'Pedro')
+    last_name = models.CharField(max_length=255, default= 'Ramirez')
     username = models.CharField(max_length=255)
     score = models.IntegerField()
     email = models.EmailField(max_length=300, default='testing@angrybird.com')
-    # profile_image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
+    profile_image = models.ImageField(height_field=None, 
+    width_field=None, max_length=300, blank=True)
     rating = models.IntegerField()
-    # full_name = ['first_name' + ' ' + 'last_name']
+    
    
     
     def __str__(self) -> str:

@@ -4,7 +4,7 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Maintest </title>
+    <title> Welcome to Angry Bird </title>
     
     <!-- Optional: Add meta tags for SEO -->
     <meta name="description" content="A brief description of your page">
@@ -13,47 +13,68 @@
 
     <link rel="stylesheet" href="{% static 'polls\maintest1.css' %}">
 </head>
-<body class="text-white">
-<p> Que bola </p>
-<h1 id="first">ANGRY BIRD</h1>
-<div id="second">
-    <a href="authpage.html" target = _blank><button type="button" class="btn btn-info">Sign in </button> </a>
-    <br>
-    <br>
-    <a href="authpage.html" target = _blank><button type="button" class="btn btn-info">Log in </button> </a>
-</div>
+<body class="text-white"> 
+    <header> 
+        <h1 id="first">ANGRY BIRD</h1>
+        <div id="second"> 
+            <a href="auth_game/" target = _blank><button type="button" class="btn btn-info">Sign in </button> </a>
+            <a href="sign_in_game/" target = _blank><button type="button" class="btn btn-info">Log in </button> </a>
+        </div>
+        <div> 
+            <a href='user_profile/' target = _blank> 
+                <img src="{% static 'media\empty_profile.jpg' %}" 
+                class="col-sm-2 rounded-circle" alt="User profile image"> 
+                
+            </a>
+            <!--Here I will put as a round thumbnail the user image if he added and
+            if it is authenticated (if authenticated and if image get the image field on model if 
+            not just get a generic image). Also if they click there they will be send 
+            to his profile -->
+        </div>
+    </header>
 
-<h3>Easy</h3>   
-<a href="authpage.html" target = _blank><img 
-        src="Images\angrybird5.jpg" class="col-sm-4 rounded-circle" alt="Happy bird"></a> 
+    <main>
+        <div> 
+            <h3>Easy</h3>   
+            <a href="http://127.0.0.1:8000/user_game/" target = _blank><img 
+            src="{% static 'media\angrybird5.jpg' %}" class="col-sm-4 rounded-circle" alt="Happy bird"></a> 
     
-    
-   
-<h3>Medium</h3>  
-<a href="authpage.html" target = _blank><img 
-        src="Images\angrybird2.png" class="col-sm-4 rounded-circle" alt="Angry bird"></a>
+            <h3>Medium</h3>  
+            <a href="http://127.0.0.1:8000/user_game/" target = _blank><img 
+            src="{% static 'media\angrybird2.png' %}" class="col-sm-4 rounded-circle" alt="Angry bird"></a>
     
 
-    
-<h3>Dificult</h3>   
-<a href="authpage.html" target = _blank><img src="Images\angrybirds6.jpg" 
-    class="col-sm-4 rounded-circle" alt="You don't want mess with this bird"></a>
+            <h3>Dificult</h3>   
+            <a href="http://127.0.0.1:8000/user_game/" target = _blank><img src="{% static 'media\angrybirds6.jpg' %}" 
+            class="col-sm-4 rounded-circle" alt="You don't want mess with this bird"></a>
     
  
 
-    <!--when user hit the level we should POST the data on related table(model)
-        and at the same time render the authentication page. When user sign in and we populated 
-        the related table; then there is that third table that associate this user with 
-        the difficulty that user picked
+            <!--when user hit the level we should POST the data on related table(model)
+            and at the same time render the authentication page. When user sign in and we populated 
+            the related table; then there is that third table that associate this user with 
+            the difficulty that user picked-->
+        </div>
+        <div> 
+            <!-- here will be an animation of the game or an autoplayed video
+            of the game-->
+        </div>
+    <main>
+    
+    <footer> 
+        <div>
+            <h3 style="color: aliceblue;">Contacts</h3>
+            <p> <a href="https://github.com/DanySA22" target="_blank"> My Github Account</a></p>
+            <p> <a href="https://www.linkedin.com/in/daniel-savignon-araujo-606194237/" target="_blank">My Linkedin</a></p>
+            <p> <a href="http://danielsavignon24@gmail.com " target="_blank">danielsavignon24@gmail.com </a> </p>
+          
+          </div>
+    </footer>
 
-    -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 
 </html>
 
 
-<!-- <html> 
-<p>Hello my friend testing</p>
-    
-</html>
