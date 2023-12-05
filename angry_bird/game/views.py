@@ -26,6 +26,7 @@ def say_hello3(request):
     return render(request, 'game.html')
 
 #the next groups of views are for the frontend profile page that include Get, POST, PUT.
+
 @api_view(['GET', 'POST', 'PUT'])
 def user_profile(request):
     if request.method == 'GET':
@@ -56,12 +57,18 @@ def user_profile(request):
 
 @api_view()
 def specific_user(request, pk):
-    return Response(pk)
+    user = Customer.objects.get(pk=pk)
+    serializer = CustomerSerializer(user)
+    return Response(serializer.data)
+'''The previous function is giving me the data for a particular user.
+If I add a  filter to this I can select each particular field of this user data.
+I can create a different endpoint for each field data of the user and attached individually to 
+the corresponding HTML element on the frontend.
+Or maybe there is a way to do it all in once through the session after auth maybe'''
 
-
-@api_view()
+@api_view( ['GET', 'POST', 'PUT'])
 def game_score(request):
-    puntuation = Customer.objects.all()
+    puntuation = Customer.objects.values_list('score')
     serializer = CustomerSerializer(puntuation, many=True)
     return Response(serializer.data)  
     '''elif request.method == 'POST':
