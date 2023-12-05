@@ -4,5 +4,5 @@ from . import models
 
 admin.site.register(models.Customer)
 
-#admin.site.register(models.Dificulty)
+admin.site.register(models.Dificulty)
 # class AdminDificulty(admin.Admind)
