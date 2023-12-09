@@ -1,40 +1,103 @@
 body {
-    background-color: burlywood;
+    /*background-color: burlywood;*/
+    background-color: yellowgreen;
 }
-
-#profile1 {
-    position:relative;
-    top: 200px;
-    left: 300px;
+header {
+    border: 5px red solid;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
     
 }
 
-#profile2 {
-    float: right;
-    position: relative;
-    right: 100px;
-    bottom: 300px;
+header a {
+    
+
 }
-#profile3 {
-    float: right;
-    position: relative;
-    right: -50px;
-    top: 100px;
+
+header img {
+
+
 }
-#profile4 {
-    float: right;
-    position: relative;
-    left: 180px;
-    top: 300px;
-}
-#profile5 {
-    position: relative;
-    top: 400px;
-}
+
 #for_home {
     width: 70px;
     height: 70px;
-    position: relative;
-    left: 70px;
-    top:25px;
+        
+} 
+
+main {
+    /* height: 60vh;*/
+    border: 5px blue solid;
+    padding: 5%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    align-items: center;
+    justify-content:center;
+}
+
+
+#profile_information {
+    margin: auto;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#profile_rating {
+    margin: auto;
+    text-align: center;
+    grid-column: 2;
+    grid-row: 1;
+}
+#profile_score {
+    margin: auto;
+    text-align: center;
+    grid-column: 2;
+    grid-row: 2;
+}
+#profile_sentence {
+    margin: auto;
+    text-align: center;
+    grid-column: 1;
+    grid-row: 2;
+    text-align: center;
+}
+
+footer {
+    border: 5px red solid;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 10%;
+    
+}
+
+footer h3 {
+    grid-row: 1;
+    grid-column: 1 / 4;
+    margin:auto;
+}
+
+#profile_level_easy {
+    grid-row: 2;
+    grid-column: 1;
+    
+}
+
+#profile_level_medium {
+    grid-row: 2;
+    grid-column: 2;
+    
+
+}
+
+#profile_level_difficult {
+    grid-row: 2;
+    grid-column: 3;
+    
+
 }

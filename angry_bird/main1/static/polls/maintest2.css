@@ -1,0 +1,99 @@
+body {
+    /*background-color:  rgb(42, 165, 134); 
+   background-image: url('{% static "media\main_page3.jpg" %}');*/
+   background-size: cover;
+   background-repeat: repeat;
+
+  
+}
+
+header {
+    height: 70%;
+    border: 5px green solid;
+    padding: 5%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 40% 40%;
+    
+}
+
+#first_header {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: center;
+    letter-spacing: 20px;
+    color: red;
+}
+
+#second_header {
+    grid-column: 3;
+    grid-row: 1;
+    text-align: center;
+}
+#third_header {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: center;
+}
+
+main {
+    height: 60%;
+    border: 5px blue solid;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 20px;
+    background-image: url('\media\main_page3.jpg')
+  
+}
+
+#level_image1 {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: center;
+}
+
+#level_image2 {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: center;
+    
+}
+
+#level_image3 {
+    grid-column: 3;
+    grid-row: 1;
+    text-align: center;
+  }
+
+footer {
+    height: 20%;
+    border: 5px green solid;
+    padding: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 40% 40%;
+}
+
+#title_footer {
+   grid-row: 1;
+   grid-column: 1/4;
+   text-align: center;
+}
+
+#contact_footer1 {
+   grid-row: 2;
+   grid-column: 1;
+   text-align: center;
+}
+#contact_footer2 {
+    grid-row: 2;
+    grid-column: 2;
+    text-align: center;
+ }
+#contact_footer3 {
+    grid-row: 2;
+    grid-column: 3;
+    text-align: center;
+ }

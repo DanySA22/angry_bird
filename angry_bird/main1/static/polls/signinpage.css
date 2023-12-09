@@ -1,10 +1,8 @@
 body {
-    background-image: url('{ % static 'media/angrybird5.jpg' %}');
-    background-repeat: no-repeat;
-    background-size: cover;
-    
-    /*background-color: blue;*/
-}
+    background: rgb(9,121,117);
+    background: radial-gradient(circle, rgba(9,121,117,0.5714020501999628) 35%, rgba(36,0,21,1) 72%, rgba(0,212,255,1) 100%);
+} 
+
 
 #Sign1 {
     position: relative;

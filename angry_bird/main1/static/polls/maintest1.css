@@ -1,20 +1,20 @@
 body {
-    background-color:  brown;
+    background-color:  rgb(165, 42, 42);
    /*background-image: url('media\main_page3.jpg');*/
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-#first {
-    text-align: center;
-    letter-spacing: 5px;
-    color: red;
-    position: relative;
-    top: 100px;
-
+main {
+  display: flex;
+  flex-direction: column-reverse;
 }
+#first_header {
+    text-align: center;
+    letter-spacing: 20px;
+    color: red;
+    }
 
-#second {
-  position: relative;
-  left:90%; 
+#level_image {
+  display: inline-flex;
 }
