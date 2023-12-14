@@ -4,12 +4,12 @@
 }
 
 #game{
-    background-color: aqua;
+    background-color: rgb(255, 0, 123);
     /*background-image: url("game_background1.jpg");
     background-size: cover;
     background-repeat: no-repeat;*/
-    width: 1000px;
-    height: 1100px;
+    max-width: 100%;
+    height: auto;
     border: 1px solid black;
     margin: auto;
     overflow: hidden;

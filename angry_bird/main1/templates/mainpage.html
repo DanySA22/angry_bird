@@ -23,7 +23,7 @@
         <div id="third_header"> 
             <a href='user_profile/' target = _blank> 
                 <img src="{% static 'media\empty_profile.jpg' %}" 
-                class="col-sm-2 rounded-circle" alt="User profile image"> 
+                class="col-sm-4 rounded-circle" alt="User profile image" style='max-width: 100%; height: auto'> 
                 
             </a>
             <!--Here I will put as a round thumbnail the user image if he added and
@@ -33,22 +33,22 @@
         </div>
     </header>
 
-    <main  style= "background-image: url('{% static "media\main_page3.jpg" %}')">
+    <main  style= "background-image: url('{% static "media\main_page3.jpg" %}');  background-size: cover; background-repeat: repeat;">
         <div id= 'level_image1'> 
             <h3>Easy</h3>   
             <a href="http://127.0.0.1:8000/user_game/" target = _blank><img 
-            src="{% static 'media\angrybird5.jpg' %}" class="col-sm-4 rounded-circle" alt="Happy bird"></a> 
+            src="{% static 'media\angrybird5.jpg' %}" style="max-width: 100%; height: auto;" class="col-sm-4 rounded-circle" alt="Happy bird"></a> 
         </div>
         <div id= 'level_image2'>
             <h3>Medium</h3>  
             <a href="http://127.0.0.1:8000/user_game/" target = _blank><img 
-            src="{% static 'media\angrybird2.png' %}" class="col-sm-4 rounded-circle" alt="Angry bird"></a>
+            src="{% static 'media\angrybird2.png' %}" style="max-width: 100%; height: auto;" class="col-sm-4 rounded-circle" alt="Angry bird"></a>
         </div>
 
         <div id= 'level_image3'>
             <h3>Difficult</h3>   
             <a href="http://127.0.0.1:8000/user_game/" target = _blank><img src="{% static 'media\angrybirds6.jpg' %}" 
-            class="col-sm-4 rounded-circle" alt="You don't want mess with this bird"></a>
+            class="col-sm-4 rounded-circle" style="max-width: 100%; height: auto;" alt="You don't want mess with this bird"></a>
     
  
 
@@ -60,12 +60,13 @@
         
     </main>
     
-    <footer style= "background-image: url('{% static "media\main_page3.jpg" %}')"> 
+    <footer style= "background-image: url('{% static "media\main_page3.jpg" %}');  background-size: cover; background-repeat: repeat;"> 
         
         <h3 id='title_footer'>Contacts</h3>
-        <p id='contact_footer1'> <a href="https://github.com/DanySA22" target="_blank"> My Github Account</a></p>
-        <p id='contact_footer2'> <a href="https://www.linkedin.com/in/daniel-savignon-araujo-606194237/" target="_blank">My Linkedin</a></p>
-        <p id='contact_footer3'> <a href="http://danielsavignon24@gmail.com " target="_blank">danielsavignon24@gmail.com </a> </p>
+        <a id='contact_footer1' href="https://github.com/DanySA22" target="_blank"> <button type="button" class="btn btn-info">Github Account</button></a>
+        <a id='contact_footer2' href="https://www.linkedin.com/in/daniel-savignon-araujo-606194237/" target="_blank"><button type="button" class="btn btn-info">Linkedin </button></a>
+        <a id='contact_footer3' href="http://danielsavignon24@gmail.com " target="_blank" style='max-width: 100%;
+        height: auto;'><button type="button" class="btn btn-info">danielsavignon24@gmail.com </button></a> 
                 
     </footer>
 

@@ -17,7 +17,7 @@ for user already authenticated-->
     <header> 
         <a href="http://127.0.0.1:8000/" target="_blank"> <img id="for_home" class="rounded-circle" src="{% static "media\house_to_main.jpg"%}" 
             alt="Going to main page"> </a>
-        <img id="profile2" src="{% static 'media\empty_profile.jpg' %}" 
+        <img id="profile2" src="{% static 'media\empty_profile.jpg' %}" style='max-width:100%; height: auto;' 
             class="rounded-circle" alt="User profile image">
             <!--Here I will put as a round thumbnail the user image if 
         he added (in that case will be a get the image field on Coustomer model)
@@ -29,25 +29,29 @@ for user already authenticated-->
         -->
     </header>
     <main> 
+        
+        <h3 id='profile_title'>PROFILE INFORMATION</h3>
         <div id="profile_information">
-            <h3>PROFILE INFORMATION</h3>
-            <form style="width:600px;" action="game.html" method="post, get">
+            <form  action="/game.html" method="post, get">
                 <label for="fname">First Name</label>
-                <input type="text" id="fname">
                 <br>
-                <br>
+                <input type="text" id="fname" name='fname'>
+                <br><br>
                 <label for="lname">Last Name</label>
-                <input type="text" id="lname">
                 <br>
-                <br>
+                <input type="text" id="lname" name='lname'>
+                <br><br>
                 <label for="email"> Email</label>
-                <input type="email" id="email">
+                <br>
+                <input type="email" id="email" name='email'>
                 <br><br>
                 <label for="uname">Username</label>
-                <input type="text" id="uname">
+                <br>
+                <input type="text" id="uname" name='uname'>
                 <br><br>
                 <label for="psw">Password</label>
-                <input type="password" id="psw">
+                <br>
+                <input type="password" id="psw" name='psw'>
                 <br><br>
                 <button type="button" class="btn btn-info">Submit</button>
             </form>
@@ -56,15 +60,24 @@ for user already authenticated-->
             <div>
                 <h3>How we did it?</h3>
             <form action="submit.py" method="post">
-                <label for="one">1</label>
+                <label for="one">Bad</label>
+                <br>
                 <input type="checkbox" id="one">
-                <label for="two">2</label>
+                <br><br> 
+                <label for="two">Regular</label>
+                <br>
                 <input type="checkbox" id="two">
-                <label for="three">3</label>
+                <br><br>
+                <label for="three">Ok</label>
+                <br>
                 <input type="checkbox" id="three">
-                <label for="four">4</label>
+                <br><br>
+                <label for="four">Thumbs up</label>
+                <br>
                 <input type="checkbox" id="four">
-                <label for="five">5</label>
+                <br><br>
+                <label for="five">Pretty good</label>
+                <br>
                 <input type="checkbox" id="5">
                 <br><br>
                 <button type="button" class="btn btn-dark">Submit</button>
@@ -77,31 +90,28 @@ for user already authenticated-->
         <div id="profile_score">
             <div>
             <h3>Score</h3>
-            <p> <span id='puntuation'> Testing </span> points</p>
+            <p> <span id='puntuation' style='color: red;'> Testing </span> points</p>
             </div>
         <!-- This will receive back a get request with the user score-->
         </div>
-        <div id="profile_sentence"> <p> Not forget to add here the cool sentence </p> </div>
+        
     </main>
     
     <footer >
         <h3>What level do you prefer?</h3>
         <div id="profile_level_easy" class="card">
-            <p class="card-title"> Easy </p>
-            <a href="game.html" target="_blank"><img src="{% static 'media\angrybird5.jpg' %}" class="card-img-top"></a>
+            <a href="game.html" target="_blank"> <h5 class="card-title"> Easy </h5> </a>
             <p class="card-body"> Good level for practice and have a 
             good time</p>
         </div>
         <div id="profile_level_medium" class="card">
-                    <p class="card-title"> Medium </p>
-                    <a href="game.html" target="_blank" style='display: block;'><img src="{% static 'media\angrybird2.png' %}" class="card-img-top"></a> 
-                    <p class="card-body"> Great challenge for adrenaline pump</p>
+            <a href="game.html" target="_blank"> <h5 class="card-title"> Medium </h5> </a>
+            <p class="card-body"> Great challenge for adrenaline pump</p>
         </div>
         <div id="profile_level_difficult" class="card">
-            <p class="card-title"> Dificult </p>
-            <a href="game.html" target="_blank"><img src="{% static 'media\angrybirds6.jpg' %}" class="card-img-top"></a>
-            <p class="card-body"> Particularry good for causing heart attacks</p>
-        </div>
+            <a href="game.html" target="_blank"> <h5 class="card-title"> Difficult </h5> </a>
+            <p class="card-body"> Particulary good for causing heart attacks</p> 
+        </div> 
                
             <!--when user click any of this link will be sent gto game1, game2, game3
             they are different html with different speed representing the different levels
