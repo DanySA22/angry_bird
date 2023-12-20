@@ -15,18 +15,21 @@
 </head>
 <body>
     <a href="http://127.0.0.1:8000/" target="_blank"> <img id="for_home" class="rounded-circle" src="{% static "media\house_to_main.jpg"%}" alt="Going to main page"> </a>
-            
+    <div id = "Log0">   
     <form id="Log1" action="game.html" method="get" class="d-flex flex-column">
+        
         <h1>Log in</h1>
         <label for="uname">Username</label>
-        <input type="text" id="uname" class="col-sm-3">
+        <input type="text" id="uname" class="col-sm-6">
         <label for="psw">Password</label>
-        <input type="password" id="psw" class="col-sm-3">
+        <input type="password" id="psw" class="col-sm-6">
         <br>
         <br>
-        <input type="submit" value="Submit" class="col-sm-1"> 
+        <input type="submit" value="Submit" class="col-sm-3"> 
+        
     </form>
-
+    </div>
+    
     <!--when user hit submit we should POST the data on related table(model) and at the same time render 
         the game at the level that user alredy picked-->
     

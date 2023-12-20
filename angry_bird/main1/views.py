@@ -1,7 +1,11 @@
+from rest_framework.views import APIView
 from django.shortcuts import render
+from rest_framework.response import Response
 from django.http import HttpResponse
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view
 
- 
 # Create your views here.
 def main_page(request):
     return render(request, 'mainpage.html')
@@ -9,6 +13,9 @@ def main_page(request):
 def test_page(request):
     return render(request, 'index.html')
 
+# @api_view(['GET'])
+# @authentication_classes([BasicAuthentication])
+# @permission_classes([IsAuthenticated])
 def user_profile(request):
     return render(request, 'profile.html')
 

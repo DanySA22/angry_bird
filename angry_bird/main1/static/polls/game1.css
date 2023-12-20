@@ -3,13 +3,36 @@
     margin: 0;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+
+}
+header {
+    display: flex;
+    flex-direction: row;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding: 5%;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;  /* This height give me the idea in how much I need to reduce the proportion of the game div in order to 
+     have the same functionality that currently has*/
+    box-sizing: border-box;
+}
+
+main {
+    height: 1100px;
+    width: 100vw;
+}
+
 #game{
     background-color: rgb(85, 0, 255);
     /*background-image: url("game_background1.jpg");
     background-size: cover;
     background-repeat: no-repeat;*/
-    max-width: 100%;
-    height: auto;
+    max-width: 100 vw;
+    height: 1100px;
     border: 1px solid black;
     margin: auto;
     overflow: hidden;
@@ -49,12 +72,12 @@
 
 }
 
-@keyframes movement {
+/* @keyframes movement {
     from {left: 0%; top: 320px;}
     to { left: 100%; top: 320px;}
-}
+} */
 
-.first {
+/* .first {
     float: right;
     position: relative;
     right: 40px;
@@ -76,4 +99,4 @@
     position: relative;
     left: 70px;
     top:25px;
-}
+} */

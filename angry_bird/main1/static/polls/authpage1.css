@@ -3,18 +3,6 @@ body {
     background: radial-gradient(circle, rgba(9,121,117,0.5714020501999628) 35%, rgba(36,0,21,1) 72%, rgba(0,212,255,1) 100%);
 }
 
-#Sign1 {
-    position: relative;
-    left: 35%;
-    top: 150px;
-}
-
-#Log1 {
-    position: relative;
-    left: 35%;
-    top: 200px;
-}
-
 #for_home {
     width: 70px;
     height: 70px;
@@ -22,3 +10,14 @@ body {
     left: 70px;
     top:25px;
 }
+
+#Sign1 {
+    /* border: 5px red solid; */
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
