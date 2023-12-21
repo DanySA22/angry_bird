@@ -17,16 +17,36 @@ header {
     
 }
 
-header a {
+@media screen and (max-width: 800px) {
     
+    header {
+      max-width: 100%;
+      box-sizing: border-box; 
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 30px;
+    }
 
-}
+    #profile_level_easy, #profile_level_medium, #profile_level_difficult 
+   {
+        max-width: 100%;
+        height: 90%;
+        font-size: small;
+       
+    } 
 
-header img {
-
-
-}
-
+     footer {
+        padding-bottom: 4%;
+        box-sizing: border-box; 
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    } 
+    
+    
 
 
 main {
@@ -81,7 +101,7 @@ footer {
     row-gap: 20px;
     padding: 10%;
     padding-top: 3%;
-    max-height: 30vh;
+    max-height: 30vh; 
     box-sizing: border-box;
     justify-content: center;
     

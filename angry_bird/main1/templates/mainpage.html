@@ -17,8 +17,13 @@
 <body class="text-white" style= "background-image: url('{% static "media\main_page3.jpg" %}');  background-size: cover; background-repeat: no repeat;"> 
     <header> 
 
-        <h1 id="first_header">ANGRY BIRD <spam> This time
-            our beloved Angry Bird it is going to face an spacial adventure. Let's help him! <spam></h1>
+        <h1 id="first_header">ANGRY BIRD </h1>
+
+        <div id= "below_first_header"> 
+            <p>  This time
+            our beloved Angry Bird it is going to face an spacial adventure. Let's help him! </p>
+            <img src= "{% static 'media\Myangrybird.png' %}" alt= "Game introduction image" class="img-fluid img-thumbnail w-50 h-50">
+        </div>
         <div id="second_header"> 
             <a href="auth_game/" target = _blank><button type="button" class="btn btn-info text-white">Sign Up </button> </a>
             <a href="sign_in_game/" target = _blank><button type="button" class="btn btn-info text-white">Log in </button> </a>

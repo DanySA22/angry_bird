@@ -6,14 +6,14 @@ body {
 }
 
 header {
-    height: 70%;
+    /* height: 70%; */
     border: 5px green solid; 
     padding: 5%;
     padding-left: 10%;
     padding-right: 10%;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 40% 40%;
+    grid-template-rows: 1fr 1fr 2fr;
     box-sizing: border-box;
 }
 
@@ -27,13 +27,17 @@ header {
     font-size: 80px;
 }
 
-spam {
-    display: block;
-    font-family: Sans-serif;
-    font-size: 16px;
-    letter-spacing:normal;
-    padding-top: 10%;
+#below_first_header {
+    grid-column: 2;
+    grid-row: 3;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30%;
 }
+
 
 #second_header {
     grid-column: 3;
