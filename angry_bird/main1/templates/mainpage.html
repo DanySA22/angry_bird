@@ -10,21 +10,20 @@
     <meta name="description" content="A brief description of your page">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
     <link rel="stylesheet" href="{% static 'polls\maintest2.css' %}?v=1">
 </head>
-<body class="text-white"> 
-    <header style= "background-image: url('{% static "media\More_angry-bird2.jpg" %}'); background-size: cover; background-repeat: no-repeat; background-position: center;"> 
+<body class="text-white" style= "background-image: url('{% static "media\main_page3.jpg" %}');  background-size: cover; background-repeat: no repeat;"> 
+    <header> 
         <h1 id="first_header">ANGRY BIRD</h1>
         <div id="second_header"> 
-            <a href="auth_game/" target = _blank><button type="button" class="btn btn-info">Sign Up </button> </a>
-            <a href="sign_in_game/" target = _blank><button type="button" class="btn btn-info">Log in </button> </a>
+            <a href="auth_game/" target = _blank><button type="button" class="btn btn-info text-white">Sign Up </button> </a>
+            <a href="sign_in_game/" target = _blank><button type="button" class="btn btn-info text-white">Log in </button> </a>
         </div>
         <div id="third_header"> 
-            <a href='user_profile/' target = _blank> 
-                <img src="{% static 'media\empty_profile.jpg' %}" 
-                class="col-sm-4 rounded-circle" alt="User profile image" style='max-width: 100%; height: auto'> 
-                
+            <a href="http://127.0.0.1:8000/" target = _blank> 
+                <i class="fa-solid fa-house-user fa-5x"></i>
             </a>
             <!--Here I will put as a round thumbnail the user image if he added and
             if it is authenticated (if authenticated and if image get the image field on model if 
@@ -33,22 +32,22 @@
         </div>
     </header>
 
-    <main  style= "background-image: url('{% static "media\main_page3.jpg" %}');  background-size: cover; background-repeat: no repeat;">
-        <div id= 'level_image1'> 
+    <main>
+        <div id= 'level_image1' class="col-sm-6"> 
             <h3>Easy</h3>   
             <a href="http://127.0.0.1:8000/user_game/" target = _blank><img 
-            src="{% static 'media\angrybird5.jpg' %}" style="max-width: 100%; height: auto;" class="col-sm-4 rounded-circle" alt="Happy bird"></a> 
+            src="{% static 'media\angrybird5.jpg' %}"  class="rounded-circle img-fluid" alt="Happy bird"></a> 
         </div>
-        <div id= 'level_image2'>
+        <div id= 'level_image2' class="col-sm-6">
             <h3>Medium</h3>  
             <a href="http://127.0.0.1:8000/user_game/" target = _blank><img 
-            src="{% static 'media\angrybird2.png' %}" style="max-width: 100%; height: auto;" class="col-sm-4 rounded-circle" alt="Angry bird"></a>
+            src="{% static 'media\angrybird2.png' %}" class="rounded-circle img-fluid" alt="Angry bird"></a>
         </div>
 
-        <div id= 'level_image3'>
+        <div id= 'level_image3' class="col-sm-6">
             <h3>Difficult</h3>   
             <a href="http://127.0.0.1:8000/user_game/" target = _blank><img src="{% static 'media\angrybirds6.jpg' %}" 
-            class="col-sm-4 rounded-circle" style="max-width: 100%; height: auto;" alt="You don't want mess with this bird"></a>
+            class="rounded-circle img-fluid" alt="You don't want mess with this bird"></a>
     
  
 
@@ -62,7 +61,8 @@
     
     <footer> 
         
-        <h3 id='title_footer'>Contacts</h3>
+        <h5 id='title_footer'><spam>Demo Game </spam> <spam style="font-style: italic; font-size: 12px;"> by Daniel Savignon Araujo </spam> 
+            <spam> Get in touch!</spam></h5>
         <a id='contact_footer1' href="https://github.com/DanySA22" target="_blank"> <button type="button" class="btn btn-info"> GITHUB</button></a>
         <a id='contact_footer2' href="https://www.linkedin.com/in/daniel-savignon-araujo-606194237/" target="_blank"><button type="button" class="btn btn-info"> LINKEDIN </button></a>
         <a id='contact_footer3' href="http://danielsavignon24@gmail.com " target="_blank" style='max-width: 100%;

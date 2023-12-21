@@ -3,12 +3,12 @@
     margin: 0;
 }
 
-body {
+/* body {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
 
 }
-header {
+/* header {
     display: flex;
     flex-direction: row;
     padding-top: 2%;
@@ -17,9 +17,9 @@ header {
     justify-content: space-around;
     align-items: center;
     height: 50px;  /* This height give me the idea in how much I need to reduce the proportion of the game div in order to 
-     have the same functionality that currently has*/
+     have the same functionality that currently has
     box-sizing: border-box;
-}
+} */
 
 main {
     height: 1100px;
@@ -27,10 +27,6 @@ main {
 }
 
 #game{
-    background-color: rgb(85, 0, 255);
-    /*background-image: url("game_background1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;*/
     max-width: 100 vw;
     height: 1100px;
     border: 1px solid black;
