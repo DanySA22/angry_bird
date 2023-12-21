@@ -22,23 +22,34 @@ header {
     grid-row: 2;
     text-align: center;
     letter-spacing: 20px;
-    color: aliceblue; 
+    color: rgb(255, 240, 240); 
     font-family: Algerian;
+    font-size: 80px;
 }
 
+spam {
+    display: block;
+    font-family: Sans-serif;
+    font-size: 16px;
+    letter-spacing:normal;
+    padding-top: 10%;
+}
 
 #second_header {
     grid-column: 3;
     grid-row: 1;
     text-align: center;
     display: flex;
-    flex-direction: row;
-    align-content: space-around;
-    /* gap: 40px; */
+    flex-direction: column;
+    
+    gap: 20px;
+    
+
 }
 
 #second_header button {
    transition: transform 0.3s ease-in-out;
+   font-weight: bold;
 }
 
 #second_header button:hover {
@@ -144,6 +155,7 @@ footer {
  #contact_footer1 button, #contact_footer2 button, #contact_footer3 button {
     transition: transform 0.3s ease-in-out;
     color: white;
+    font-weight: bold;
 
  }
 

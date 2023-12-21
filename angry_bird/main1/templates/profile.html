@@ -17,8 +17,9 @@
 for user already authenticated-->
 <body style= "background-image: url('{% static "media\main_page3.jpg" %}');  background-size: cover; background-repeat: no repeat;">
     <header> 
-        <a href="http://127.0.0.1:8000/" target="_blank"> <img id="for_home" class="rounded-circle" src="{% static "media\house_to_main.jpg"%}" 
-            alt="Going to main page"> </a>
+        <a href="http://127.0.0.1:8000/" target="_blank"> 
+            <i class="fa-solid fa-house-user fa-5x"></i>
+        </a>
         <img id="profile2" src="{% static 'media\empty_profile.jpg' %}" style='max-width:100%; height: auto;' 
             class="rounded-circle" alt="User profile image">
             <!--Here I will put as a round thumbnail the user image if 
@@ -55,12 +56,12 @@ for user already authenticated-->
                 <br>
                 <input type="password" id="psw" name='psw'>
                 <br><br>
-                <button type="button" class="btn btn-info">Submit</button>
+                <button id='form_button' type="button" class="btn btn-info text-white">Submit</button>
             </form>
         </div>
         <div id="profile_rating">
             <div>
-                <h3>How we did it?</h3>
+                <h3>How did we do?</h3>
             <form action="submit.py" method="post">
                 <label for="one">Bad</label>
                 <br>
@@ -74,15 +75,15 @@ for user already authenticated-->
                 <br>
                 <input type="checkbox" id="three">
                 <br><br>
-                <label for="four">Thumbs up</label>
+                <label for="four">Pretty good</label>
                 <br>
                 <input type="checkbox" id="four">
                 <br><br>
-                <label for="five">Pretty good</label>
+                <label for="five"> Fantastic </label>
                 <br>
                 <input type="checkbox" id="5">
                 <br><br>
-                <button type="button" class="btn btn-dark">Submit</button>
+                <button id='form_button' type="button" class="btn btn-dark">Submit</button>
             </form>
             </div>
             <!-- Here don't forget create a validation 
