@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang='en' onclick="jump()">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Let's play! </title>
+    
+    <!-- Optional: Add meta tags for SEO -->
+    <meta name="description" content="A brief description of your page">
+
+<link rel="stylesheet" href="{% static 'polls/game3.css' %}?v=1">
+<!--<link rel="styles" href=""> -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+</head>
+
+<body id="demo1" style= "background-image: url('{% static "media\main_page3.jpg" %}');  background-size: cover; background-repeat: no repeat;">
+    <header> 
+        <a href="http://127.0.0.1:8000/" target="_blank"> <i class="fa-solid fa-house-user fa-5x"></i>
+        </a>
+        <a href='//127.0.0.1:8000/user_profile/' target = _blank> 
+            <img src="{% static 'media\empty_profile.jpg' %}" id="profile_image"
+            class="rounded-circle" alt="User profile image"> 
+        </a>
+            
+            
+    
+   <!--
+    What about if I just add this on top; create a flex with two flex items header and div id=game;
+I will set it on column and the div id=game I will give him the same hight that is already establishe in the game 
+
+OJO Put everything on the same div as the beginning and just add those extra elements with z-index in a way that they are displayed at front but they are
+not affecting the game functionality-->
+    
+    {% comment %} OJO on the hole I can just add 100% transparency and it looks like if
+    it was it an empty space 
+    The black background for the obstacle will be substitute by an space usual rectangular
+    obstacle.  {% endcomment %}
+     
+    </header>
+    
+    <main> 
+        
+        <div id="game">
+            
+           
+    <div id="pipe" style= "background-image: url('{% static "media\meteorit.png" %}');  background-repeat: repeat-y;">
+        <!-- img src="pipe.jpg" alt="Pipeline to avoid" -->
+        
+    </div>
+    <div id="angry_bird" style= "background-image: url('{% static "media\character.png" %}');  background-size: cover; background-repeat: no repeat;"><!--img  onclick="Jump()" class="rounded" src="Images\angrybird2.png" alt="Angry bird" --> </div>  
+    
+    <div id="hole"> Escape </div>
+    <!--<a href="profile.html" target="_blank"> <img 
+       id="profile_image" class="rounded-circle" src="empty_profile.jpg" alt="Your profile image"></a> -->
+    </div>
+    </main>
+    <script src="{% static 'polls/game.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+
+</html>

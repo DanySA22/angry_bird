@@ -56,7 +56,7 @@ main {
     position: relative;
     left: 950px;
     background-color: black;
-    animation: pipe 3s infinite linear;
+    animation: pipe 2.5s infinite linear;
 }
 
 @keyframes pipe{
@@ -71,7 +71,7 @@ main {
     position: relative;
     left: 950px;
     top: -1100px;
-    animation: pipe 3s infinite linear;
+    animation: pipe 2.5s infinite linear;
     text-align: center;
     color: aliceblue;
     font-size:large;
