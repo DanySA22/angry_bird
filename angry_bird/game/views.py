@@ -7,7 +7,8 @@ from .models import Customer
 from .serializer import CustomerSerializer
 from django.shortcuts import get_object_or_404 
  
-# Create your views here.
+# Create your views here. The different elements involve in the frontend will use axios and they will interact with the same
+# endpoint but doing different methods each case
 
 #RELATED TO GAMEPAGE
 
@@ -18,8 +19,7 @@ that last POST/PUT of the score. If user is playing without being auth, this inf
 So this POST/PUT only work if isAuthenticated. 
  So this function should be filter by user playing (id) -OR JUST HAVING THE USER AUTHENTICATED AND WORKING
 IN A SESSION - and by the score field.
-The different elements involve in the frontend will use axios and they will interact with the same
-endpoint but doing different methods each case'''
+'''
 
 
 @api_view( ['GET', 'POST', 'PUT'])
@@ -36,18 +36,27 @@ def game_score(request, pk):
         
         
 '''A View that GET user profile images if user isAuthenticated && uploaded a photo already otherwise 
-just render the generic empty image (I set that empty image as the default which
-is also the one that appears on Anonymus users)'''
+just render the generic empty image. I should set on th model image field 
+this empty profile image as default'''
 
 class UserImage(APIView):
     pass
 
 #RELATED TO PROFILE PAGE (USER CAN ONLY ACCESS THIS PAGE IF IT IS AUTHENTICATED)
 
-'''I should be able to GET the related user information in the corresponding spaces: 
+'''I should be able to GET the related user information in the corresponding space 
+(when the page load/refresh): 
 first name, last name, email, username, password, image.
-I should also be able to POST-PUT those informations. Rating will not have GET only 
-POST-PUT.  Score only have GET.
+I should also be able to POST-PUT those informations. I guess I can just 
+submit the form as one (only one view) that way the user will see the info; also a
+edit botton under each field of the form; but when submit all the form is submitted as one 
+(this way I don't need to add more button for submit or change anything on that page 
+frontend and diminish the amount of
+class views creation and axios creation); and even when get modify complete it will 
+only look different on those fields that we changed.
+
+Rating will not have GET only POST-PUT.  
+Score only have GET (the last score on the user instance).
 '''
 class UserFirstname(APIView):
     pass
@@ -122,7 +131,8 @@ I will have to set condition or promises that when this happens render this part
 endpoint; or if this other choice level happens render this other particular game
 endpoint.
 In conclusion I will just forget about setting anything in the backend related to 
-difficulty and just handlesd with frontend endpoint redirection:
+difficulty and just handle with frontend endpoint redirection. 
+
 Eliminated the level model and relationship; eliminate the class related to level 
 handling
     
@@ -132,7 +142,7 @@ handling
 
 '''This will handle POST method of the form. Validation rules could be included (on the back or frontend).
 After completion user will be redirected to auth page. Which means that when user
-click submit a POST will happend to the backend -if valid the form- and a redirection will happen to
+click submit a POST will happend to the backend -if valid the form- and then a redirection will happen to
 auth endpoint -this is with a JS async promise (On Axios): after POST then redirect to auth endpoint '''
 
 class UserSignin(APIView):
