@@ -6,8 +6,7 @@ body {
 }
 
 header {
-    /* height: 70%; */
-    border: 5px green solid; 
+    
     padding: 5%;
     padding-left: 10%;
     padding-right: 10%;
@@ -15,6 +14,49 @@ header {
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 1fr 1fr 2fr;
     box-sizing: border-box;
+}
+
+@media screen and (max-width: 800px) {
+    header {
+        display: flex;
+        flex-direction: column-reverse;
+        flex: 100%;
+        flex-wrap: wrap;
+        gap: 15px;
+
+    }
+
+     h1 {
+        display: none;
+       /*  height: auto;
+        width: 50%;
+        letter-spacing: normal;
+        font-size: 5px;
+        font-family: 'Courier New', Courier, monospace;
+        border: 5px green solid;
+        display: inline-block;
+        display: flex;
+        flex-wrap: wrap;
+        text-align: start; */
+    }  
+
+    main {
+    
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: space-around;
+        align-items: center;
+        gap: 15px; 
+        box-sizing: border-box;
+       
+    }
+
+    #level_image1, #level_image2, #level_image3 {
+        text-align: center;
+        height: 300px;
+      }
+    
 }
 
 #first_header {
@@ -27,6 +69,7 @@ header {
     font-size: 80px;
 }
 
+
 #below_first_header {
     grid-column: 2;
     grid-row: 3;
@@ -36,6 +79,8 @@ header {
     flex-wrap: wrap;
     align-items: center;
     gap: 30%;
+    color: rgb(255, 240, 240); 
+    
 }
 
 
@@ -68,21 +113,22 @@ header {
 
 
 main {
-    /* height: 60vh; */
-    border: 5px red solid; 
+    
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     align-content: space-around;
     align-items: center;
-    gap: 15px; 
+    
     box-sizing: border-box;
+    padding-top: 5%;
+    padding-left: 8%;
+    padding-right: 8%;
    
 }
 
 main div {
     transition: transform 0.3s ease-in-out;
-    border: 5px red solid;
     box-sizing: border-box;
 }
 
@@ -91,7 +137,7 @@ main div:hover {
 }
 #level_image1, #level_image2, #level_image3 {
   text-align: center;
-  /* flex: 1;   */
+  height: 300px;
 }
 
 
@@ -110,11 +156,10 @@ main div:hover {
 
 footer {
     
-    border: 5px red solid; 
+    
     padding: 5%;
     display: grid;
     gap: 20px;
-    /* justify-items: stretch; */
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     

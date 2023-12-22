@@ -17,21 +17,17 @@
 
 </head>
 
-<body id="demo1">
-    <main> 
-     
-        <div id="game" style= "background-image: url('{% static "media\main_page3.jpg" %}');  background-size: cover; background-repeat: no repeat;">
+<body id="demo1" style= "background-image: url('{% static "media\main_page3.jpg" %}');  background-size: cover; background-repeat: no repeat;">
+    <header> 
+        <a href="http://127.0.0.1:8000/" target="_blank"> <i class="fa-solid fa-house-user fa-5x"></i>
+        </a>
+        <a href='//127.0.0.1:8000/user_profile/' target = _blank> 
+            <img src="{% static 'media\empty_profile.jpg' %}" id="profile_image"
+            class="rounded-circle" alt="User profile image"> 
+        </a>
             
-    {% comment %} <header>
-            <a href='//127.0.0.1:8000/user_profile/' target = _blank> 
-            <img src="{% static 'media\empty_profile.jpg' %}" 
-            class="col-sm-2 rounded-circle" alt="User profile image"> 
-            </a>
-            <a href="http://127.0.0.1:8000/" target="_blank"> <img id="for_home" class="rounded-circle" src="{% static "media\house_to_main.jpg"%}" 
-            alt="Going to main page">
-            </a>
-            <p>  Score <spam> ? </spam> points </p> 
-    </header> {% endcomment %}
+            
+    
    <!--
     What about if I just add this on top; create a flex with two flex items header and div id=game;
 I will set it on column and the div id=game I will give him the same hight that is already establishe in the game 
@@ -43,14 +39,21 @@ not affecting the game functionality-->
     it was it an empty space 
     The black background for the obstacle will be substitute by an space usual rectangular
     obstacle.  {% endcomment %}
+     
+    </header>
     
-    <div id="pipe">
+    <main> 
+        
+        <div id="game">
+            
+           
+    <div id="pipe" style= "background-image: url('{% static "media\meteorit.png" %}');  background-repeat: repeat-y;">
         <!-- img src="pipe.jpg" alt="Pipeline to avoid" -->
         
     </div>
-    <div id="angry_bird"><!--img  onclick="Jump()" class="rounded" src="Images\angrybird2.png" alt="Angry bird" --> </div>  
+    <div id="angry_bird" style= "background-image: url('{% static "media\character.png" %}');  background-size: cover; background-repeat: no repeat;"><!--img  onclick="Jump()" class="rounded" src="Images\angrybird2.png" alt="Angry bird" --> </div>  
     
-    <div id="hole"></div>
+    <div id="hole"> Escape </div>
     <!--<a href="profile.html" target="_blank"> <img 
        id="profile_image" class="rounded-circle" src="empty_profile.jpg" alt="Your profile image"></a> -->
     </div>
