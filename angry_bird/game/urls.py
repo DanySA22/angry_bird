@@ -2,9 +2,16 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('game_points/<pk>/', views.game_score),
+    path('score/<pk>/', views.ScoreSave.as_view()),
+    path('image/<pk>/', views.UserImage.as_view()),
     path('profile/', views.user_profile),
     path('profile/<pk>/', views.specific_user),
+    path('profile/form/<pk>/', views.FormProfile.as_view()),
+    path('profile/score/<pk>/', views.UserScore.as_view()),
+    path('profile/rating/<pk>/', views.UserRating.as_view()),
+    path('profile/image/<pk>/', views.UserImageProfile.as_view()),
+    path('sign_up/<pk>/', views.UserSignin.as_view()),
+    path('log_in/<pk>/', views.UserAuthentication.as_view()),
     # path('media1/', views.image_user),
 ]
 
