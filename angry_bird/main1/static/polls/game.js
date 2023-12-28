@@ -41,3 +41,50 @@ function jump(){
         jumpCount++;
     },10);
 }
+
+
+
+function image() {
+    let user_image = document.getElementsByTagName('img');
+    const userID ='loggedInUserID';
+    const url =  'http://127.0.0.1:8000/game/image/<pk>';
+    axios.get(url)
+    .then(response => {
+        const image_profile = response.data.profile_image; 
+        document.getElementById('profile_image').src = image_profile;
+    })
+    .catch(error => {
+        console.error('Error fetching user image:', error);
+        // Handle errors appropriately
+    });
+
+}
+
+function checkAuthentication() {
+    // This is a placeholder; replace with actual authentication check
+    // For example, checking if a user token exists in local storage
+    const isAuthenticated = localStorage.getItem('userToken') !== null;
+    return isAuthenticated;
+}
+
+// Call the function on page load if user is authenticated
+document.addEventListener('DOMContentLoaded', () => {
+    if (checkAuthentication()) {
+        image();
+    } //If the user is authenticated, it then calls image() to fetch and display the user's image.
+});
+
+
+function score () {
+    const url =  'http://127.0.0.1:8000/game/score/<pk>';
+    axios.post(url, {
+        score: +(counter-1)
+    })
+    .then (response => {
+        console.log(response.data)
+    })
+    .catch(error => {
+        console.error('Error posting data:', error);
+        // Handle errors appropriately
+    })
+}

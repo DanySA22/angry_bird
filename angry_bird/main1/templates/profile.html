@@ -35,26 +35,26 @@ for user already authenticated-->
         
         <h3 id='profile_title'>PROFILE INFORMATION</h3>
         <div id="profile_information">
-            <form  action="/game.html" method="post, get">
-                <label for="fname">First Name</label>
+            <form  id="profile_form">
+                <label for="first_name">First Name</label>
                 <br>
-                <input type="text" id="fname" name='fname'>
+                <input type="text" id="first_name" name='first_name'>
                 <br><br>
-                <label for="lname">Last Name</label>
+                <label for="last_name">Last Name</label>
                 <br>
-                <input type="text" id="lname" name='lname'>
+                <input type="text" id="last_name" name='last_name'>
                 <br><br>
                 <label for="email"> Email</label>
                 <br>
                 <input type="email" id="email" name='email'>
                 <br><br>
-                <label for="uname">Username</label>
+                <label for="username">Username</label>
                 <br>
-                <input type="text" id="uname" name='uname'>
+                <input type="text" id="username" name='username'>
                 <br><br>
-                <label for="psw">Password</label>
+                <label for="password">Password</label>
                 <br>
-                <input type="password" id="psw" name='psw'>
+                <input type="password" id="password" name='password'>
                 <br><br>
                 <button id='form_button' type="button" class="btn btn-info text-white">Submit</button>
             </form>
@@ -62,7 +62,7 @@ for user already authenticated-->
         <div id="profile_rating">
             <div>
                 <h3>How did we do?</h3>
-            <form action="submit.py" method="post">
+            <form id='rating_form'>
                 <label for="one">Bad</label>
                 <br>
                 <input type="checkbox" id="one">

@@ -19,13 +19,13 @@
         <i class="fa-solid fa-house-user fa-5x"></i>
      </a>
     <div id = "Log0">   
-    <form id="Log1" action="game.html" method="get" class="d-flex flex-column" style="color: aliceblue; gap: 10px;">
+    <form id="Log1" class="d-flex flex-column" style="color: aliceblue; gap: 10px;">
         
         <h1 style="color: aliceblue; font-family: Algerian;">Log in</h1>
-        <label for="uname">Username</label>
-        <input type="text" id="uname" class="col-sm-6">
-        <label for="psw">Password</label>
-        <input type="password" id="psw" class="col-sm-6">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" class="col-sm-6">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="col-sm-6">
         <br>
         <br>
         <input id="form_button" type="submit" value="Submit" class="col-sm-3 btn btn-info text-white"> 
@@ -35,7 +35,8 @@
     
     <!--when user hit submit we should POST the data on related table(model) and at the same time render 
         the game at the level that user alredy picked-->
-    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{% static 'polls/signinpage1.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 

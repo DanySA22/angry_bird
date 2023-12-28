@@ -4,10 +4,14 @@ from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 # from rest_framework.generics import 
 from .models import Customer
-from .serializer import CustomerSerializer, CustomerEmailSerializer, CustomerFirstnameSerializer, CustomerImageSerializer, CustomerLastnameSerializer, CustomerPasswordSerializer, CustomerRatingSerializer, CustomerScoreSerializer, CustomerUsernameSerializer, CustomerFormSerializer, CustomerAuthenticationSerializer
+from .serializer import CustomerSerializer, CustomerEmailSerializer, CustomerFirstnameSerializer, CustomerImageSerializer, CustomerLastnameSerializer, CustomerPasswordSerializer, CustomerRatingSerializer, CustomerScoreSerializer, CustomerUsernameSerializer, CustomerFormSerializer, CustomerAuthenticationSerializer, UserSerializer
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
+from rest_framework.authtoken.models import Token
  
 # Create your views here. The different elements involve in the frontend will use axios and they will interact with the same
 # endpoint but doing different methods each case
@@ -24,17 +28,21 @@ IN A SESSION - and by the score field.
 '''
 
 class ScoreSave(APIView):
-    def post(self, request, pk):
-        user = get_object_or_404(Customer, pk=pk) #Give me a model instance data (a single user data)
-        serializer = CustomerSerializer(user, data=request.data, partial=True)
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    def post(self, request):
+        serializer = CustomerScoreSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()  #If the serializer is a subclass of ModelSerializer, serializer.save() will save the data to the database table associated with the model that the serializer represents.
-            return Response(serializer.data)
-        else:
-            return Response({'error': 'Invalid data'}, status=status.HTTP_400_BAD_REQUEST)
-    def put(self, request, pk ):
-        user = get_object_or_404(Customer, pk=pk)
-        serializer = CustomerSerializer(user, data=request.data, partial=True)
+            profile, created = Customer.objects.get_or_create(user=request.user)
+            for key, value in serializer.validated_data.items():
+                setattr(profile, key, value)
+        profile.save()
+        return Response(serializer.data)
+        return Response({'error': 'Invalid data'}, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+    def put(self, request):
+        serializer = CustomerScoreSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response('ok')
@@ -71,6 +79,8 @@ on JS we set the particular element to change the img source for what is retriev
 through axios'''
 
 class UserImage(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     def get(self, request, pk):
         image = Customer.objects.get(pk=pk)
         serializer = CustomerImageSerializer(image) 
@@ -100,6 +110,8 @@ Score only have GET (the last score on the user instance).
 '''
 
 class FormProfile(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     def get(self, request, pk):
         user = Customer.objects.get(pk=pk)
         serializer = CustomerFormSerializer(user) 
@@ -140,6 +152,8 @@ class UserPassword(APIView):
     pass
 '''
 class UserImageProfile(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     def get(self, request, pk):
         image = get_object_or_404(Customer, pk=pk)
         serializer = CustomerImageSerializer(image) 
@@ -162,15 +176,19 @@ class UserImageProfile(APIView):
         else:
             return Response({'error': 'Invalid data'}, status=status.HTTP_400_BAD_REQUEST)
     
-#Pendant to fix the post-put on UerImageProfile view
+#Pendant to fix the post-put on UserImageProfile view
 
 class UserScore(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     def get(self, request, pk):
         score = Customer.objects.get(pk=pk)
         serializer = CustomerScoreSerializer(score) 
         return Response(serializer.data) 
 
 class UserRating(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
     def post(self, request, pk):
         user = get_object_or_404(Customer, pk=pk)
         serializer = CustomerScoreSerializer(user, data=request.data) 
@@ -181,6 +199,7 @@ class UserRating(APIView):
             return Response({'error': 'Invalid data'}, status=status.HTTP_400_BAD_REQUEST)
         
     def put(self, request, pk):
+        
         user = get_object_or_404(Customer, pk=pk)
         serializer = CustomerScoreSerializer(user, data=request.data) 
         if serializer.is_valid():
@@ -254,9 +273,8 @@ click submit a POST will happend to the backend -if valid the form- and then a r
 auth endpoint -this is with a JS async promise (On Axios): after POST then redirect to auth endpoint '''
 
 class UserSignin(APIView): 
-    def post(self, request, pk): 
-        user = get_object_or_404(Customer, pk=pk)
-        serializer = CustomerFormSerializer(user, data=request.data) 
+    def post(self, request, format=None): 
+        serializer = UserSerializer(data=request.data) 
         if serializer.is_valid():
             serializer.save()  
             return Response(serializer.data)
@@ -277,18 +295,36 @@ even if unauthenticated but if you do it on profile that will redirect as well b
 
 '''
 
-class UserAuthentication(APIView):
-    def post(self, request, pk):
-        user = get_object_or_404(Customer, pk=pk)
-        serializer = CustomerAuthenticationSerializer(user, data=request.data) 
-        if serializer.is_valid():
-            serializer.save()  
-            return Response(serializer.data)
-        else:
-            return Response({'error': 'Invalid data'}, status=status.HTTP_400_BAD_REQUEST)
+# class UserAuthentication(APIView):
+#     def post(self, request, pk):
+#         user = get_object_or_404(Customer, pk=pk)
+#         serializer = CustomerAuthenticationSerializer(user, data=request.data) 
+#         if serializer.is_valid():
+#             serializer.save()  
+#             return Response(serializer.data)
+#         else:
+#             return Response({'error': 'Invalid data'}, status=status.HTTP_400_BAD_REQUEST)
         
+class UserAuthentication(APIView):
+    def post(self, request):
+        username = request.data.get("username") # It's used to retrieve the value associated with the specified key, in this case, "username".
+        password = request.data.get("password")
+        user = authenticate(username=username, password=password)
 
+        if user:
+            token, created = Token.objects.get_or_create(user=user)
+            return Response({"token": token.key}, status=status.HTTP_200_OK)
+        else:
+            return Response({"error": "Invalid Credentials"}, status=status.HTTP_400_BAD_REQUEST)
 
+'''Django's authenticate function, which checks if the username and password are valid. 
+If the credentials are valid, it returns a User object; otherwise, it returns None.
+If user is not None (meaning authentication is successful), a token is either retrieved or 
+created for the user. This is typically used for token-based authentication in APIs.
+Token.objects.get_or_create(user=user) either gets an existing token for the user or 
+creates a new one.
+
+'''
 
 '''The HTML form should submit to the endpoint of the corresponding view.
 Make sure that the 'name' on the form field match with the name of your serializer fields
