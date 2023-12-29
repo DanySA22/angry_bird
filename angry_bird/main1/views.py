@@ -30,9 +30,5 @@ def user_game_medium(request):
 def user_game_difficult(request):
     return render(request, 'game3.html')
 
-
-''' This view set it to only work when user is authenticated; 
-the other can work with anonymus user and the images profile set just take
-the default value -the empty profile that is already set-'''
 def user_profile(request):
     return render(request, 'profile.html')

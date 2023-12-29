@@ -152,13 +152,13 @@ footer h3 {
     text-align: center;
 }
 
-#form_button {
+.form_button {
     transition: transform 0.3s ease-in-out;
     
 
 }
 
-#form_button:hover {
+.form_button:hover {
     transform: scale(2.0) rotateY(20deg);
 
 }

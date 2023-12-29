@@ -18,9 +18,12 @@ setInterval(function(){
     var holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
     var cTop = -(1100-angry_birdTop);
     if((angry_birdTop>1050)||((pipeLeft<50)&&(pipeLeft>-50)&&((cTop<holeTop)||(cTop>holeTop+350)))){
-        alert("Game over. Score: "+(counter-1));
+        var finalScore = counter - 1;
+        updateScore(finalScore);
+        alert("Game over. Score: "+ finalScore);
         angry_bird.style.top = 500 + "px";
         counter=0;
+        
     }
 },10);   //the function inside the interval will be executed every 10 msec and all his variable information get
 // updated in that frame of time
@@ -42,44 +45,19 @@ function jump(){
     },10);
 }
 
-
-
-function image() {
-    let user_image = document.getElementsByTagName('img');
-    const userID ='loggedInUserID';
-    const url =  'http://127.0.0.1:8000/game/image/';
-    axios.get(url)
-    .then(response => {
-        const image_profile = response.data.profile_image; 
-        document.getElementById('profile_image').src = image_profile;
-    })
-    .catch(error => {
-        console.error('Error fetching user image:', error);
-        // Handle errors appropriately
-    });
-
+const token = localStorage.getItem('token');
+console.log("Retrieved token:", token);
+if (token) {
+    axios.defaults.headers.common['Authorization'] = `Token ${token}`;
 }
 
-function checkAuthentication() {
-    // This is a placeholder; replace with actual authentication check
-    // For example, checking if a user token exists in local storage
-    const isAuthenticated = localStorage.getItem('userToken') !== null;
-    return isAuthenticated;
-}
-
-// Call the function on page load if user is authenticated
-document.addEventListener('DOMContentLoaded', () => {
-    if (checkAuthentication()) {
-        image();
-    } //If the user is authenticated, it then calls image() to fetch and display the user's image.
-});
-
-
-function score () {
+function updateScore (score) {
     const url =  'http://127.0.0.1:8000/game/score/';
-    axios.post(url, {
-        score: +(counter-1)
-    })
+    const data = {
+        score: score
+    };
+
+    axios.put(url, data)
     .then (response => {
         console.log(response.data)
     })

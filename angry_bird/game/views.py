@@ -32,12 +32,11 @@ class ScoreSave(APIView):
     permission_classes = [IsAuthenticated]
     
     def put(self, request):
-        serializer = CustomerScoreSerializer(data=request.data)
+        user_profile = Customer.objects.get(user=request.user)
+        serializer = CustomerScoreSerializer(user_profile, data=request.data)
         if serializer.is_valid():
-            profile = Customer.objects.get(user=request.user)
-            profile.score = serializer.validated_data.get('score')          
-            profile.save()
-            return Response('ok')
+            serializer.save()
+            return Response(serializer.data)
         else:
             return Response({'error': 'Invalid data'}, status=status.HTTP_400_BAD_REQUEST)
          
@@ -235,3 +234,16 @@ Make sure that the 'name' on the form field match with the name of your serializ
 '''
 
 
+#LOG OUT
+
+class UserLogout(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        # This will only be executed if the user is authenticated
+        try:
+            request.user.auth_token.delete()
+            return Response({"message": "Successfully logged out"}, status=status.HTTP_200_OK)
+        except (AttributeError, Token.DoesNotExist):
+            return Response({"error": "Invalid token / already logged out"}, status=status.HTTP_400_BAD_REQUEST)
