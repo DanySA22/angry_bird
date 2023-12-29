@@ -25,6 +25,20 @@ class CustomerFormSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email', 'username', 'password']
+        
+    # def update(self, instance, validated_data):
+    #     instance.first_name = validated_data.get('first_name', instance.first_name)
+    #     instance.last_name = validated_data.get('last_name', instance.last_name)
+    #     instance.email = validated_data.get('email', instance.email)
+    #     instance.username = validated_data.get('username', instance.username)
+
+    #     # Handle password update with hashing
+    #     password = validated_data.get('password')
+    #     if password:
+    #         instance.set_password(password)
+
+    #     instance.save()
+    #     return instance
           
 class CustomerUsernameSerializer(serializers.ModelSerializer):
     class Meta:

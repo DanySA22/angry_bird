@@ -1,7 +1,7 @@
 const token = localStorage.getItem('token');
 console.log("Retrieved token:", token);
 if (token) {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    axios.defaults.headers.common['Authorization'] = `Token ${token}`;
 }
 
 
@@ -54,11 +54,12 @@ document.addEventListener("DOMContentLoaded", function () {
     axios.get('http://127.0.0.1:8000/game/profile/score/')
         .then(response => {
             // Handle the response data
-            const customerScores = response.data;
+            const customerScores = response.data.score;
 
             // Update the HTML element with the received data
             customerScoresElement.textContent = customerScores;
             console.log(response)
+            
             
         })
         .catch(error => {
@@ -68,30 +69,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-/*   
-customerScoresElement.textContent = JSON.stringify(customerScores, null, 2);
-        })
-
-    This line updates the textContent 
-    of the previously selected HTML element with the JSON 
-    representation of the customerScores. JSON.stringify is 
-    used to convert the JavaScript object into a string with f
-    ormatted JSON, making it readable. The parameters null
-     and 2 are used for formatting purposes (they specify no 
-        custom replacer function and 2 spaces for indentation,
-         respectively).        
-*/
-
-
 // RELATED TO THE RATING FORM
 
 document.getElementById('rating_form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
     const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData.entries());
-    const url =  'http://127.0.0.1:8000/game/profile/rating/<pk>';
-    axios.post(url, data)
+    let dataToSend = {};
+    // Check if the checkbox is checked and add its value to dataToSend
+    if (formData.get('rating') === '5') {
+        dataToSend = { rating: 5 };
+    }
+    if (formData.get('rating') === '4') {
+        dataToSend = { rating: 4 };
+    }
+    if (formData.get('rating') === '3') {
+        dataToSend = { rating: 3 };
+    }
+    if (formData.get('rating') === '2') {
+        dataToSend = { rating: 2 };
+    }
+    if (formData.get('rating') === '1') {
+        dataToSend = { rating: 1 };
+    }
+    const url =  'http://127.0.0.1:8000/game/profile/rating/';
+    axios.put(url, dataToSend)
         .then(response => {
             console.log('Signup successful:', response.data);
             // Handle successful signup (e.g., redirect to login page)
@@ -105,19 +107,39 @@ document.getElementById('rating_form').addEventListener('submit', function(event
 
 //RELATED TO THE PROFILE FORM
 
+document.addEventListener("DOMContentLoaded", function () {
+    const profileForm = document.getElementById('profile_form');
+
+    // Make an Axios GET request to your DRF endpoint
+    axios.get('http://127.0.0.1:8000/game/profile/form/')
+        .then(response => {
+            const userData = response.data
+            document.getElementById('username').value = userData.username || '';
+            document.getElementById('first_name').value = userData.first_name || '';
+            document.getElementById('last_name').value = userData.last_name || '';
+            document.getElementById('email').value = userData.email || '';
+            document.getElementById('password').value = userData.password || '';
+            console.log(response)
+          
+        })
+        .catch(error => {
+            console.error("Error fetching data:", error);
+        });
+});
+
 document.getElementById('profile_form').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
-    const url =  'http://127.0.0.1:8000/game/profile/form/<pk>';
-    axios.post(url, data)
+    const url =  'http://127.0.0.1:8000/game/profile/form/';
+    axios.put(url, data)
         .then(response => {
-            console.log('Signup successful:', response.data);
+            console.log('Update successful:', response);
             // Handle successful signup (e.g., redirect to login page)
         })
         .catch(error => {
-            console.error('Signup error:', error);
+            console.error('Update error:', error);
             // Handle errors (e.g., display error message to user)
         });
 });

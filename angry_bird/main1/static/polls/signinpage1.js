@@ -1,6 +1,6 @@
 const token = localStorage.getItem('userToken');
 if (token) {
-   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+   axios.defaults.headers.common['Authorization'] = 'Token ${token}';
 }
 
 // Local storage provides a way to store data in the browser that persists even 
@@ -18,7 +18,7 @@ document.getElementById('Log1').addEventListener('submit', function(event) {
             // Handle successful signup (e.g., redirect to login page)
             const userToken = response.data.token;
             localStorage.setItem('token', userToken);
-            axios.defaults.headers.common['Authorization'] = `Bearer ${userToken}`;
+            axios.defaults.headers.common['Authorization'] = 'Token ${userToken}';
             redirectToGame();
         })
         .catch(error => {

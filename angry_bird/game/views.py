@@ -18,10 +18,10 @@ from rest_framework.authtoken.models import Token
 
 #RELATED TO GAMEPAGE
 
-''' in this function we should POST-PUT the score that a single user cumulate before he lose.
+''' in this function we should PUT the score that a single user cumulate before he lose.
 This means that when user lose not only we will see that pop-up with Game over and the score
-but this score will be POST/PUT on user instance DB. When user check in profile will see
-that last POST/PUT of the score. If user is playing without being auth, this info will not be saved.
+but this score will be PUT on user instance DB (it has 1 as score by default). When user check in profile will see
+that last PUT of the score. If user is playing without being auth, this info will not be saved.
 So this POST/PUT only work if isAuthenticated. 
  So this function should be filter by user playing (id) -OR JUST HAVING THE USER AUTHENTICATED AND WORKING
 IN A SESSION - and by the score field.
@@ -30,16 +30,6 @@ IN A SESSION - and by the score field.
 class ScoreSave(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-    
-    def post(self, request):
-        serializer = CustomerScoreSerializer(data=request.data)
-        if serializer.is_valid():
-            profile = Customer.objects.get(user=request.user)
-            profile.score = serializer.validated_data.get('score')          
-            profile.save()
-            return Response(serializer.data)
-        return Response({'error': 'Invalid data'}, status=status.HTTP_400_BAD_REQUEST)
-    
     
     def put(self, request):
         serializer = CustomerScoreSerializer(data=request.data)
@@ -78,7 +68,9 @@ def game_score(request, pk):
 just render the generic empty image. I should set on th model image field 
 this empty profile image as default. Here you just need to add the image field data for that user
 on JS we set the particular element to change the img source for what is retrieve from backend
-through axios'''
+through axios. 
+For now will be only on empty profile I will not set up this view or the
+related frontend
 
 class UserImage(APIView):
     authentication_classes = [TokenAuthentication]
@@ -89,7 +81,7 @@ class UserImage(APIView):
 #A customed serialized that included only the specific field that I want to return        
         return Response(serializer.data) 
 
-'''Leter I will need to substitute the the image argument of the serializer for the
+Leter I will need to substitute the the image argument of the serializer for the
 request.user (after I set up auth and I add auth and permission class to this view) for
 obtaining that particular field data of the auth user''' 
     
@@ -114,21 +106,14 @@ Score only have GET (the last score on the user instance).
 class FormProfile(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-    def get(self, request, pk):
-        user = Customer.objects.get(pk=pk)
-        serializer = CustomerFormSerializer(user) 
+    def get(self, request):
+        user_profile = request.user
+        serializer = CustomerFormSerializer(user_profile) 
         return Response(serializer.data)
-    def post(self, request, pk):
-        user = get_object_or_404(Customer, pk=pk)
-        serializer = CustomerFormSerializer(user, data=request.data) 
-        if serializer.is_valid():
-            serializer.save()  
-            return Response(serializer.data)
-        else:
-            return Response({'error': 'Invalid data'}, status=status.HTTP_400_BAD_REQUEST)
-    def put(self, request, pk):
-        user = get_object_or_404(Customer, pk=pk)
-        serializer = CustomerFormSerializer(user, data=request.data) 
+    
+    def put(self, request):
+        user_profile = request.user
+        serializer = CustomerFormSerializer(user_profile, data=request.data) 
         if serializer.is_valid():
             serializer.save()  
             return Response(serializer.data)
@@ -136,127 +121,26 @@ class FormProfile(APIView):
             return Response({'error': 'Invalid data'}, status=status.HTTP_400_BAD_REQUEST)
         
         
-'''
-I think with the Form it will be enough to update and get
-class UserFirstname(APIView):
-    pass
-
-class UserLastname(APIView):
-    pass
-
-class UserEmail(APIView):
-    pass
-
-class UserUsername(APIView):
-    pass
-
-class UserPassword(APIView):
-    pass
-'''
-class UserImageProfile(APIView):
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
-    def get(self, request, pk):
-        image = get_object_or_404(Customer, pk=pk)
-        serializer = CustomerImageSerializer(image) 
-        return Response(serializer.data) 
-    
-    def post(self, request, pk):
-        user = get_object_or_404(Customer, pk=pk) 
-        serializer = CustomerImageSerializer(user, data=request.data)
-        if serializer.is_valid():
-            serializer.save()  
-            return Response(serializer.data)
-        else:
-            return Response({'error': 'Invalid data'}, status=status.HTTP_400_BAD_REQUEST)
-    def put(self, request, pk):
-        user = get_object_or_404(Customer, pk=pk) 
-        serializer = CustomerImageSerializer(user, data=request.data)
-        if serializer.is_valid():
-            serializer.save()  
-            return Response(serializer.data)
-        else:
-            return Response({'error': 'Invalid data'}, status=status.HTTP_400_BAD_REQUEST)
-    
-#Pendant to fix the post-put on UserImageProfile view
-
-# class UserScore(APIView):
-#     def get(self, request):
-#         result = Customer.objects.all()
-#         serializer = CustomerFormSerializer(result)
-#         return Response(serializer.data)
 class UserScore(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     def get(self, request):
-        persona = User.objects.get(user=request.user)
+        persona = Customer.objects.get(user=request.user)
         serializer = CustomerScoreSerializer(persona) 
         return Response(serializer.data) 
 
 class UserRating(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-    def post(self, request, pk):
-        user = get_object_or_404(Customer, pk=pk)
-        serializer = CustomerScoreSerializer(user, data=request.data) 
-        if serializer.is_valid():
-            serializer.save()  
-            return Response(serializer.data)
-        else:
-            return Response({'error': 'Invalid data'}, status=status.HTTP_400_BAD_REQUEST)
-        
-    def put(self, request, pk):
-        
-        user = get_object_or_404(Customer, pk=pk)
-        serializer = CustomerScoreSerializer(user, data=request.data) 
+    def put(self, request):
+        persona = Customer.objects.get(user=request.user)
+        serializer = CustomerRatingSerializer(persona, data=request.data) 
         if serializer.is_valid():
             serializer.save()  
             return Response(serializer.data)
         else:
             return Response({'error': 'Invalid data'}, status=status.HTTP_400_BAD_REQUEST)
  
-class UserProfileView(APIView):
-    # authentication_classes = [TokenAuthentication]
-    # permission_classes = [IsAuthenticated]
-    def get(self, request):
-        prueba = Customer.objects.get(user=request.user)
-        serializer = UserSerializer(prueba)
-        return Response(serializer.data)
-      
-@api_view(['GET', 'POST', 'PUT'])
-def user_profile(request):
-    if request.method == 'GET':
-        profile = Customer.objects.all()   # the ORM part; the data that I want to return. Check your frontend to see what particular data to return
-        serializer = CustomerSerializer(profile, many=True) # the serializer class using as argument the ORM part. So transforming what data we decide to use on a Python dictionary.
-        return Response(serializer.data)   # Transforming the resulting Python dictionary in a JSON object.
-    elif request.method == 'POST':
-        serializer = CustomerSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.validated_data
-            serializer.save()
-            return Response('ok')
-        else:
-            return Response('de pinga esto')
-        
-    elif request.method == 'PUT':
-        serializer = CustomerSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.validated_data
-            serializer.save()
-            return Response('ok')
-        else:
-            return Response('de pinga esto')
-
-
-
-@api_view()
-def specific_user(request, pk):
-    user = Customer.objects.get(pk=pk)
-    serializer = CustomerSerializer(user)
-    return Response(serializer.data)
-'''The previous function is giving me the data for a particular user.
-If I add a  filter to this I can select each particular field of this user data.'''
-
 
 '''
 About levels/difficulty:
@@ -328,7 +212,11 @@ class UserAuthentication(APIView):
         if user:
             user.last_login = timezone.now()
             user.save(update_fields=['last_login'])
-            token, created = Token.objects.get_or_create(user=user)
+            # Delete existing token if it exists
+            Token.objects.filter(user=user).delete()
+
+            # Create a new token
+            token = Token.objects.create(user=user)
             return Response({"token": token.key}, status=status.HTTP_200_OK)
         else:
             return Response({"error": "Invalid Credentials"}, status=status.HTTP_400_BAD_REQUEST)
