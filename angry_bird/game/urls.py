@@ -2,12 +2,13 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('score/<pk>/', views.ScoreSave.as_view()),
-    path('image/<pk>/', views.UserImage.as_view()),
-    path('profile/', views.user_profile),
+    path('score/', views.ScoreSave.as_view()),
+    path('image/', views.UserImage.as_view()),
+    path('profile/', views.UserProfileView.as_view()),
     path('profile/<pk>/', views.specific_user),
+    path('profile/score/', views.UserScore.as_view()),
     path('profile/form/<pk>/', views.FormProfile.as_view()),
-    path('profile/score/<pk>/', views.UserScore.as_view()),
+    
     path('profile/rating/<pk>/', views.UserRating.as_view()),
     path('profile/image/<pk>/', views.UserImageProfile.as_view()),
     path('sign_up/', views.UserSignin.as_view()),

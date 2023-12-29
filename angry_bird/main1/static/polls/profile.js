@@ -1,38 +1,46 @@
+const token = localStorage.getItem('token');
+console.log("Retrieved token:", token);
+if (token) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}
+
 
 //RELATED TO THE IMAGE PROFILE
 
-function image_on_profile() {
-    let user_image = document.getElementsByTagName('img');
-    const userID ='loggedInUserID';
-    const url =  'http://127.0.0.1:8000/game/profile/image/<pk>';
-    axios.get(url)
-    .then(response => {
-        const image_profile = response.data.profile_image; 
-        document.getElementById('profile2').src = image_profile;
-    })
-    .catch(error => {
-        console.error('Error fetching user image:', error);
-        // Handle errors appropriately
-    });
+// function image_on_profile() {
+//     let user_image = document.getElementsByTagName('img');
+//     const userID ='loggedInUserID';
+//     const url =  'http://127.0.0.1:8000/game/profile/image/<pk>';
+//     axios.get(url
+        
+//     )
+//     .then(response => {
+//         const image_profile = response.data.profile_image; 
+//         document.getElementById('profile2').src = image_profile;
+//     })
+//     .catch(error => {
+//         console.error('Error fetching user image:', error);
+//         // Handle errors appropriately
+//     });
 
-}
-
-// document.getElementById('profile2').addEventListener('click', function postimage_on_profile(event) {
-      
 // }
-function checkAuthentication() {
-    // This is a placeholder; replace with actual authentication check
-    // For example, checking if a user token exists in local storage
-    const isAuthenticated = localStorage.getItem('userToken') !== null;
-    return isAuthenticated;
-}
 
-// Call the function on page load if user is authenticated
-document.addEventListener('DOMContentLoaded', () => {
-    if (checkAuthentication()) {
-        image_on_profile();
-    } //If the user is authenticated, it then calls image() to fetch and display the user's image.
-});
+// // document.getElementById('profile2').addEventListener('click', function postimage_on_profile(event) {
+      
+// // }
+// function checkAuthentication() {
+//     // This is a placeholder; replace with actual authentication check
+//     // For example, checking if a user token exists in local storage
+//     const isAuthenticated = localStorage.getItem('userToken') !== null;
+//     return isAuthenticated;
+// }
+
+// // Call the function on page load if user is authenticated
+// document.addEventListener('DOMContentLoaded', () => {
+//     if (checkAuthentication()) {
+//         image_on_profile();
+//     } //If the user is authenticated, it then calls image() to fetch and display the user's image.
+// });
 
 
 
@@ -43,13 +51,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const customerScoresElement = document.getElementById('puntuation');
 
     // Make an Axios GET request to your DRF endpoint
-    axios.get('http://127.0.0.1:8000/game/profile/score/<pk>/')
+    axios.get('http://127.0.0.1:8000/game/profile/score/')
         .then(response => {
             // Handle the response data
             const customerScores = response.data;
 
             // Update the HTML element with the received data
-            customerScoresElement.textContent = JSON.stringify(customerScores, null, 2);
+            customerScoresElement.textContent = customerScores;
+            console.log(response)
+            
         })
         .catch(error => {
             console.error("Error fetching data:", error);

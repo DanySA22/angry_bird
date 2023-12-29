@@ -1,7 +1,8 @@
-localStorage.setItem('token', userToken);
+const token = localStorage.getItem('userToken');
 if (token) {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 }
+
 // Local storage provides a way to store data in the browser that persists even 
 // after the browser is closed and reopened.  Every request made with Axios throughout your application will use these defaults header
 
@@ -16,7 +17,9 @@ document.getElementById('Log1').addEventListener('submit', function(event) {
             console.log('Signup successful:', response.data);
             // Handle successful signup (e.g., redirect to login page)
             const userToken = response.data.token;
+            localStorage.setItem('token', userToken);
             axios.defaults.headers.common['Authorization'] = `Bearer ${userToken}`;
+            redirectToGame();
         })
         .catch(error => {
             console.error('Signup error:', error);
@@ -24,6 +27,10 @@ document.getElementById('Log1').addEventListener('submit', function(event) {
         });
 });
 
+function redirectToGame() {
+    window.location.href = 'http://127.0.0.1:8000/user_game/easy/'; 
+    
+}
 
 // Certainly! The line const formData = new FormData(event.target); in JavaScript is quite powerful and serves a specific purpose in the context of handling forms. Let's break it down:
 

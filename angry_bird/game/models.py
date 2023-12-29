@@ -1,22 +1,28 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.conf import settings
 # Create your models here.
 
 
 
 class Customer(models.Model):
-    first_name = models.CharField(max_length=255, default= 'Pedro')
-    last_name = models.CharField(max_length=255, default= 'Ramirez')
-    username = models.CharField(max_length=255)
-    score = models.IntegerField()
-    email = models.EmailField(max_length=300, default='testing@angrybird.com')
-    profile_image = models.ImageField(height_field=None, 
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')
+    score = models.IntegerField(default=1)
+    profile_image = models.ImageField(upload_to='images/', height_field=None, 
     width_field=None, max_length=300, blank=True)
-    rating = models.IntegerField()
-    password =models.CharField(max_length=30, default= 'AngryBird24$')
-#    add a password field
+    rating = models.IntegerField(default=5)
+   
     
-    def __str__(self) -> str:
-        return self.username
+    # def __str__(self) -> str:
+    #     return self.username
     
-    
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Customer.objects.create(user=instance)
+
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()  

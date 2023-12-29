@@ -21,14 +21,14 @@ class UserSerializer(serializers.ModelSerializer):
 # like hashing the password. **validated_data unpacks the validated data into the function 
 # call as arguments.  return user: Finally, the newly created user object is returned.
 
-class CustomerSerializer(serializers.ModelSerializer):
+class CustomerFormSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Customer
-        fields = ['username', 'score', 'rating', 'email', 'first_name', 'last_name', 'profile_image', 'password']
-                  
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'username', 'password']
+          
 class CustomerUsernameSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Customer
+        model = User
         fields = ['username']
 
 class CustomerScoreSerializer(serializers.ModelSerializer):
@@ -43,17 +43,17 @@ class CustomerRatingSerializer(serializers.ModelSerializer):
         
 class CustomerEmailSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Customer
+        model = User
         fields = ['email']
         
 class CustomerFirstnameSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Customer
+        model = User
         fields = ['first_name']
         
 class CustomerLastnameSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Customer
+        model = User
         fields = ['last_name']
         
 class CustomerImageSerializer(serializers.ModelSerializer):
@@ -63,15 +63,12 @@ class CustomerImageSerializer(serializers.ModelSerializer):
         
 class CustomerPasswordSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Customer
+        model = User
         fields = ['password']        
 
-class CustomerFormSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Customer
-        fields = ['first_name', 'last_name', 'email', 'username', 'password']
+
         
 class CustomerAuthenticationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Customer
+        model = User
         fields = ['username', 'password']

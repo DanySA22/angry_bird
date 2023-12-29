@@ -47,7 +47,7 @@ function jump(){
 function image() {
     let user_image = document.getElementsByTagName('img');
     const userID ='loggedInUserID';
-    const url =  'http://127.0.0.1:8000/game/image/<pk>';
+    const url =  'http://127.0.0.1:8000/game/image/';
     axios.get(url)
     .then(response => {
         const image_profile = response.data.profile_image; 
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function score () {
-    const url =  'http://127.0.0.1:8000/game/score/<pk>';
+    const url =  'http://127.0.0.1:8000/game/score/';
     axios.post(url, {
         score: +(counter-1)
     })
