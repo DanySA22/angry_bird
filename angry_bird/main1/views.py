@@ -17,10 +17,6 @@ def sign_up_game(request):
     return render(request, 'signinpage.html')
 
 
-# @api_view(['GET'])
-# @authentication_classes([BasicAuthentication])
-# @permission_classes([IsAuthenticated])
-
 def user_game_easy(request):
     return render(request, 'game1.html')
 

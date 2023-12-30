@@ -14,10 +14,7 @@ class Customer(models.Model):
     width_field=None, max_length=300, blank=True)
     rating = models.IntegerField(default=5)
    
-    
-    # def __str__(self) -> str:
-    #     return self.username
-    
+        
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
         if created:

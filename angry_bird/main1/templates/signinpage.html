@@ -15,7 +15,7 @@
 
 </head>
 <body style="background-image: url('{% static "media\main_page3.jpg" %}');  background-size: cover; background-repeat: no repeat;">
-    <a href="http://127.0.0.1:8000/" target="_blank"> 
+    <a href="http://127.0.0.1:8000/" target="_self"> 
         <i class="fa-solid fa-house-user fa-5x"></i>
      </a>
     <div id = "Log0">   
@@ -33,8 +33,6 @@
     </form>
     </div>
     
-    <!--when user hit submit we should POST the data on related table(model) and at the same time render 
-        the game at the level that user alredy picked-->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{% static 'polls/signinpage1.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

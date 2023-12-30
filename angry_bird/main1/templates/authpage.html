@@ -14,7 +14,7 @@
 
 </head>
 <body style= "background-image: url('{% static "media\main_page3.jpg" %}');  background-size: cover; background-repeat: no repeat;">
-    <a href="http://127.0.0.1:8000/" target="_blank"> 
+    <a href="http://127.0.0.1:8000/" target="_self"> 
         <i class="fa-solid fa-house-user fa-5x"></i>
     </a>
     <div id="Sign1">
@@ -35,12 +35,7 @@
             <br>
             <button id="form_button" type="submit" class="col-sm-4 btn btn-info text-white">Submit</button>
         </form>
-    <!--when user hit submit we should POST the data on related table(model) and at the same time send
-        the user to the signin page
-    So under action we can put the corresponding endpoint from auth or game app; the
-    one that will receive the data as POST and will added it to the user database model and customer model
-    -->
-    
+       
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{% static 'polls/authpage.js' %}"></script>

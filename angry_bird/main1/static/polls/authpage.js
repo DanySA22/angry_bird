@@ -7,15 +7,13 @@ document.getElementById('Auth1').addEventListener('submit', function(event) {
     axios.post(url, data)
         .then(response => {
             console.log('Signup successful:', response.data);
-            // Handle successful signup (e.g., redirect to login page)
             redirectToLogin();
         })
         .catch(error => {
             console.error('Signup error:', error);
-            // Handle errors (e.g., display error message to user)
         });
 });
 
 function redirectToLogin() {
-    window.location.href = 'http://127.0.0.1:8000/sign_up_game/'; // Replace '/login' with the URL of your login page
+    window.location.href = 'http://127.0.0.1:8000/sign_up_game/'; 
 }

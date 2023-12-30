@@ -13,11 +13,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href= "{% static 'polls/profile1.css' %}?v=1">
 </head>
-<!-- The access to this page is restrcited
-for user already authenticated-->
+
 <body style= "background-image: url('{% static "media\main_page3.jpg" %}');  background-size: cover; background-repeat: no repeat;">
     <header> 
-        <a href="http://127.0.0.1:8000/" target="_blank"> 
+        <a href="http://127.0.0.1:8000/" target="_self"> 
             <i class="fa-solid fa-house-user fa-5x"></i>
         </a>
         <img id="profile2" src="{% static 'media\empty_profile.jpg' %}" style='max-width:100%; height: auto;' 
@@ -86,16 +85,13 @@ for user already authenticated-->
                 <button type="submit" class="btn btn-dark form_button">Submit</button>
             </form>
             </div>
-            <!-- Here don't forget create a validation 
-        that allow you to select and send to the user model customer field rating only one
-        puntuation at the time -->
+            
         </div>
         <div id="profile_score">
             <div>
             <h3>Score</h3>
             <p> <span id='puntuation' style='color: red;'> ? </span> points</p>
             </div>
-        <!-- This will receive back a get request with the user score-->
         </div>
         
     </main>
@@ -103,23 +99,20 @@ for user already authenticated-->
     <footer >
         <h3>What level do you prefer?</h3>
         <div id="profile_level_easy" class="card">
-            <a href="http://127.0.0.1:8000/user_game/easy/" target="_blank"> <h5 class="card-title"> Easy </h5> </a>
+            <a href="http://127.0.0.1:8000/user_game/easy/" target="_self"> <h5 class="card-title"> Easy </h5> </a>
             <p class="card-body"> Good level for practice and have a 
             good time</p>
         </div>
         <div id="profile_level_medium" class="card">
-            <a href="http://127.0.0.1:8000/user_game/medium/" target="_blank"> <h5 class="card-title"> Medium </h5> </a>
+            <a href="http://127.0.0.1:8000/user_game/medium/" target="_self"> <h5 class="card-title"> Medium </h5> </a>
             <p class="card-body"> Great challenge for adrenaline pump</p>
         </div>
         <div id="profile_level_difficult" class="card">
-            <a href="http://127.0.0.1:8000/user_game/difficult/" target="_blank"> <h5 class="card-title"> Difficult </h5> </a>
+            <a href="http://127.0.0.1:8000/user_game/difficult/" target="_self"> <h5 class="card-title"> Difficult </h5> </a>
             <p class="card-body"> Particulary good for causing heart attacks</p> 
         </div> 
                
-            <!--when user click any of this link will be sent gto game1, game2, game3
-            they are different html with different speed representing the different levels
-            Also the dificulty level on record for that user will change
-            so next time that he log in he will go directly to that level-->
+            
     </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>

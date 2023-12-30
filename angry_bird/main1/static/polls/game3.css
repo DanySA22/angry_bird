@@ -3,23 +3,6 @@
     margin: 0;
 }
 
-/* body {
-    display: flex;
-    flex-direction: column; 
-
-}
-/* header {
-    display: flex;
-    flex-direction: row;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    padding: 5%;
-    justify-content: space-around;
-    align-items: center;
-    height: 50px;  /* This height give me the idea in how much I need to reduce the proportion of the game div in order to 
-     have the same functionality that currently has
-    box-sizing: border-box;
-} */
 
 header {
     position: fixed;
@@ -90,11 +73,3 @@ main {
 
 }
 
-/* 
- You need to set well the hole and pipe backgrounds
-Replicated the same html with the name game_easy, game_medium, game_difficult> each one with a copy of css and js
-with similar name. The only thing that changes is the speed on css from 3s here in the easy; to 2.5 s on medium; and 2 s in difficult.
-We don't need to incorporate any adaptation depending on screen because in the same level 
-longer screen are faster but they have more time to prepare; smaller screen are slower but less
-time to adapt
- */

@@ -4,47 +4,6 @@ if (token) {
     axios.defaults.headers.common['Authorization'] = `Token ${token}`;
 }
 
-
-//RELATED TO THE IMAGE PROFILE
-
-// function image_on_profile() {
-//     let user_image = document.getElementsByTagName('img');
-//     const userID ='loggedInUserID';
-//     const url =  'http://127.0.0.1:8000/game/profile/image/<pk>';
-//     axios.get(url
-        
-//     )
-//     .then(response => {
-//         const image_profile = response.data.profile_image; 
-//         document.getElementById('profile2').src = image_profile;
-//     })
-//     .catch(error => {
-//         console.error('Error fetching user image:', error);
-//         // Handle errors appropriately
-//     });
-
-// }
-
-// // document.getElementById('profile2').addEventListener('click', function postimage_on_profile(event) {
-      
-// // }
-// function checkAuthentication() {
-//     // This is a placeholder; replace with actual authentication check
-//     // For example, checking if a user token exists in local storage
-//     const isAuthenticated = localStorage.getItem('userToken') !== null;
-//     return isAuthenticated;
-// }
-
-// // Call the function on page load if user is authenticated
-// document.addEventListener('DOMContentLoaded', () => {
-//     if (checkAuthentication()) {
-//         image_on_profile();
-//     } //If the user is authenticated, it then calls image() to fetch and display the user's image.
-// });
-
-
-
-
 //RELATED TO THE SCORE
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -96,11 +55,11 @@ document.getElementById('rating_form').addEventListener('submit', function(event
     axios.put(url, dataToSend)
         .then(response => {
             console.log('Signup successful:', response.data);
-            // Handle successful signup (e.g., redirect to login page)
+            alert('Rating updated')
         })
         .catch(error => {
             console.error('Signup error:', error);
-            // Handle errors (e.g., display error message to user)
+            
         });
 });
 
@@ -110,7 +69,6 @@ document.getElementById('rating_form').addEventListener('submit', function(event
 document.addEventListener("DOMContentLoaded", function () {
     const profileForm = document.getElementById('profile_form');
 
-    // Make an Axios GET request to your DRF endpoint
     axios.get('http://127.0.0.1:8000/game/profile/form/')
         .then(response => {
             const userData = response.data
@@ -136,10 +94,9 @@ document.getElementById('profile_form').addEventListener('submit', function(even
     axios.put(url, data)
         .then(response => {
             console.log('Update successful:', response);
-            // Handle successful signup (e.g., redirect to login page)
+            alert('Profile updated')
         })
         .catch(error => {
             console.error('Update error:', error);
-            // Handle errors (e.g., display error message to user)
         });
 });

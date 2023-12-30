@@ -28,16 +28,7 @@ header {
 
      h1 {
         display: none;
-       /*  height: auto;
-        width: 50%;
-        letter-spacing: normal;
-        font-size: 5px;
-        font-family: 'Courier New', Courier, monospace;
-        border: 5px green solid;
-        display: inline-block;
-        display: flex;
-        flex-wrap: wrap;
-        text-align: start; */
+       
     }  
 
     main {
@@ -140,18 +131,6 @@ main div:hover {
   height: 300px;
 }
 
-
-
-/* @media screen and (max-width: 800px) {
-    main, #level_image1, #level_image2, #level_image3 {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        box-sizing: border-box;
-        max-width: 100%;
-    }
-} */
 
 
 footer {
