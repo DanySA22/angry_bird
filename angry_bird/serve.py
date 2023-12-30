@@ -1,5 +1,6 @@
+import os
 from waitress import serve
-from angry_bird.wsgi import application  
+from angry_bird.wsgi import application  # replace 'myproject' with your Django project's name
 
-if __name__ == "__main__":
-    serve(application, port=8000)  # You can change the port number if needed
+port = int(os.environ.get("PORT", 8000))  # Default to 8000 if no PORT environment variable is set
+serve(application, port=port)

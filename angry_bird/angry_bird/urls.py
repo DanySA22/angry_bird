@@ -19,10 +19,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 import debug_toolbar
+from django.urls import re_path
+from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('game/', include('game.urls')),
     path('', include('main1.urls')),
-    path('__debug__/', include('debug_toolbar.urls'))
+    path('__debug__/', include('debug_toolbar.urls')),
+    re_path(r'^robots\.txt$', serve, {
+        'path': 'robots.txt',
+        'document_root': settings.STATIC_ROOT,
+    }),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
