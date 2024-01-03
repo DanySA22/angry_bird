@@ -8,6 +8,8 @@ django = "*"
 django-debug-toolbar = "*"
 mysqlclient = "*"
 djangorestframework = "*"
+whitenoise = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
