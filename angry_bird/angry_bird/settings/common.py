@@ -121,18 +121,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'angry_bird.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'angry_bird',
-        'HOST': 'localhost',
-        'USER': 'root',
-        'PASSWORD': 'password22W$'
-    }
-}
 
 
 # Password validation

@@ -1,2 +1,2 @@
-# release: python manage.py migrate
-web: waitress-serve --port=$PORT angry_bird.wsgi:application
+release: python manage.py migrate
+web: python serve.py
