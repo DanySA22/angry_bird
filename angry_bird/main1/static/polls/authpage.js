@@ -3,7 +3,7 @@ document.getElementById('Auth1').addEventListener('submit', function(event) {
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
-    const url =  'http://127.0.0.1:8000/game/sign_up/';
+    const url =  'game/sign_up/';
     axios.post(url, data)
         .then(response => {
             console.log('Signup successful:', response.data);
@@ -15,5 +15,5 @@ document.getElementById('Auth1').addEventListener('submit', function(event) {
 });
 
 function redirectToLogin() {
-    window.location.href = 'http://127.0.0.1:8000/sign_up_game/'; 
+    window.location.href = 'sign_up_game/'; 
 }

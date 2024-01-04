@@ -28,7 +28,7 @@ document.getElementById('Log1').addEventListener('submit', function(event) {
 });
 
 function redirectToGame() {
-    window.location.href = 'http://127.0.0.1:8000/user_game/easy/'; 
+    window.location.href = 'user_game/easy/'; 
     
 }
 
