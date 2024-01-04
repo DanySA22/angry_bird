@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from game.models import Customer
 from django.contrib.auth.models import User
-
+from django.contrib.auth.hashers import make_password
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)  
@@ -25,7 +25,23 @@ class CustomerFormSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email', 'username', 'password']
-        
+        extra_kwargs = {
+            'password': {'write_only': True}
+        }
+
+    def update(self, instance, validated_data):
+        # Check if 'password' is in validated_data and hash it if present
+        if 'password' in validated_data:
+            raw_password = validated_data.pop('password')
+            hashed_password = make_password(raw_password)
+            instance.password = hashed_password
+
+        # Update other fields normally
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+
+        instance.save()
+        return instance
              
 class CustomerUsernameSerializer(serializers.ModelSerializer):
     class Meta:
