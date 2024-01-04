@@ -1,5 +1,5 @@
 const token = localStorage.getItem('token');
-console.log("Retrieved token:", token);
+
 if (token) {
     axios.defaults.headers.common['Authorization'] = `Token ${token}`;
 }
