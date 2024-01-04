@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const customerScoresElement = document.getElementById('puntuation');
 
     // Make an Axios GET request to your DRF endpoint
-    axios.get('http://127.0.0.1:8000/game/profile/score/')
+    axios.get('/game/profile/score/')
         .then(response => {
             // Handle the response data
             const customerScores = response.data.score;
@@ -51,7 +51,7 @@ document.getElementById('rating_form').addEventListener('submit', function(event
     if (formData.get('rating') === '1') {
         dataToSend = { rating: 1 };
     }
-    const url =  'http://127.0.0.1:8000/game/profile/rating/';
+    const url =  '/game/profile/rating/';
     axios.put(url, dataToSend)
         .then(response => {
             console.log('Signup successful:', response.data);
@@ -69,7 +69,7 @@ document.getElementById('rating_form').addEventListener('submit', function(event
 document.addEventListener("DOMContentLoaded", function () {
     const profileForm = document.getElementById('profile_form');
 
-    axios.get('http://127.0.0.1:8000/game/profile/form/')
+    axios.get('/game/profile/form/')
         .then(response => {
             const userData = response.data
             document.getElementById('username').value = userData.username || '';
@@ -90,7 +90,7 @@ document.getElementById('profile_form').addEventListener('submit', function(even
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
-    const url =  'http://127.0.0.1:8000/game/profile/form/';
+    const url =  '/game/profile/form/';
     axios.put(url, data)
         .then(response => {
             console.log('Update successful:', response);

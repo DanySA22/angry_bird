@@ -6,7 +6,7 @@ if (token) {
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    const logoutUrl = 'http://127.0.0.1:8000/game/log_out/';
+    const logoutUrl = '/game/log_out/';
     axios.post(logoutUrl)
         .then(function(response) {
             console.log('Logout successful', response.data);

@@ -52,7 +52,7 @@ if (token) {
 }
 
 function updateScore (score) {
-    const url =  'http://127.0.0.1:8000/game/score/';
+    const url =  '/game/score/';
     const data = {
         score: score
     };
